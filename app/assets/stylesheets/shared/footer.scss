@@ -12,8 +12,9 @@
   align-items: center;
   justify-content: center;
   padding: 5vh 15vw;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+  color: #ffc107;
+  font-weight: bold;
+  text-shadow: 0 0 40px rgba(0, 0, 0, 1);
 }
 
 .ad-footer-title {
@@ -31,8 +32,8 @@
 .footer {
   width: 100vw;
   padding: 5vh 0;
-  color: #fff;
-  background-color: #272727;
+  color: #272727;
+  background-color: #ffc107;
   text-align: center;
 }
 
@@ -53,7 +54,7 @@
 }
 
 .footer-link {
-  color: #fff;
+  color: #272727;
   font-size: 12px;
   line-height: 30px;
 }
