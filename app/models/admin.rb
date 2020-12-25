@@ -6,7 +6,8 @@ class Admin < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :email
-    validates :password
+    with_options format: { with: /\A(?=.*?[a-z])[a-z\d]+\z/i } do
+      validates :password
+    end
   end
 end
