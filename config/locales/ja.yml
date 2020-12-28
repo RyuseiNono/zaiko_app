@@ -11,3 +11,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
+      shop:
+        name: 店名
+        location: 所在地
+        phone_number: 電話番号

@@ -5,7 +5,7 @@ class CreateShops < ActiveRecord::Migration[6.0]
       t.text :location,                  null: false
       t.string :phone_number,            null: false
       t.integer :prefecture_id
-      t.time :opening_hours
+      t.time :opening_time
       t.time :closing_time
       t.integer :parking_id
       t.integer :credit_card_id
