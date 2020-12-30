@@ -1,6 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :admin
   has_one_attached :image, dependent: :destroy
+  has_many :items
 
   with_options presence: true do
     validates :name,:location

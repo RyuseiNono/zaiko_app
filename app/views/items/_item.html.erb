@@ -1,7 +1,5 @@
-<div class="col-md-4">
-    <div class="card m-1 shadow bg-warning">
-      <div class="card-body">
-        <p class="card-text font-weight-light text-white text-center shop-name"><%= shop.name %></p>
-      </div>
-    </div>
-<% end %>
+<tr>
+  <th scope="row"><%= item_counter + 1 %></th>
+  <td><%= item.name %></td>
+  <td><%= item.count %></td>
+</tr>
