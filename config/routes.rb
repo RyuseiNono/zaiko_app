@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  resources :shops
+  resources :shops do
+    resources :items
+  end
 end

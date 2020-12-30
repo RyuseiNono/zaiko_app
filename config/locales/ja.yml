@@ -15,3 +15,6 @@ ja:
         name: 店名
         location: 所在地
         phone_number: 電話番号
+      item:
+        name: 商品名
+        count: 在庫数

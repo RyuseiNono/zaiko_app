@@ -1,0 +1,17 @@
+<%= render "shared/header"%>
+<div class="container my-10">
+<p><%= @shop.name %></p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">商品名</th>
+        <th scope="col">在庫数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "item" ,collection:  @items%>
+    </tbody>
+</table>
+</div>
+<%= render "shared/footer"%>
