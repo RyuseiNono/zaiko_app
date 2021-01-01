@@ -63,7 +63,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1vh 0;
+  /* padding: 1vh 0; */
 }
 
 .lists-left {
