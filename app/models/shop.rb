@@ -4,14 +4,20 @@ class Shop < ApplicationRecord
   has_many :items
 
   with_options presence: true do
-    validates :name,:location
+    validates :name,             length: { maximum: 40 }
+    validates :location,         length: { maximum: 1000 }
     validates :phone_number,     format: { with: /\A[\d]{1,}\z/ }
-    # prefecture_id
-    # opening_time
-    # closing_time
-    # parking_id
-    # credit_card_id
-    # electronic_money_id
+    validates :prefecture_id
+  end
+  with_options presence: { message: 'が不正です' } do
+    validates :opening_time
+    validates :closing_time
+  end
+
+  with_options presence: { message: 'を選択してください' } do
+    validates :parking_id
+    validates :credit_card_id
+    validates :electronic_money_id
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

@@ -15,6 +15,11 @@ ja:
         name: 店名
         location: 所在地
         phone_number: 電話番号
+        opening_time: 開店時間
+        closing_time: 閉店時間
+        parking_id: 駐車場
+        credit_card_id: クレジットカード
+        electronic_money_id: 電子マネー
       item:
         name: 商品名
         count: 在庫数
