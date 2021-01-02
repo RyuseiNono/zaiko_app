@@ -14,4 +14,9 @@ class Shop < ApplicationRecord
     # electronic_money_id
   end
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
+  belongs_to :presence
+  belongs_to :usability
+
 end

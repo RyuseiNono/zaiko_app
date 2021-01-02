@@ -1,25 +1,100 @@
 <%= render "shared/header"%>
 <div class="container my-3">
   <p class="h4 font-weight-bold text-center">店舗の情報を入力</p>
-    <div class="w-75 mx-auto">
+    <div class="">
     <%= form_with model:@shop ,local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
-      <div class="img-upload">
+
+      <div class="form-group">
         <div class="weight-bold-text">
-          出品画像
-          <span class="indispensable">必須</span>
+          店舗画像
+          <span class="badge badge-danger">必須</span>
         </div>
-        <div class="click-upload">
+        <div class="my-3">
           <p>
             クリックしてファイルをアップロード
           </p>
-          <%= f.file_field :image, id:"item-image" %>
+          <%= f.file_field :image, class:"form-control-file", id:"shop-image" %>
         </div>
         <div class="image-list", id="image-list"></div>
       </div>
 
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗名
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.text_field :name, class:"form-control", id:"shop-name", placeholder:"例）八百屋千代田店（40文字まで)", maxlength:"40" %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗の都道府県
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected:14}, {class:"form-control", id:"shop-prefecture"}) %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          所在地
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.text_area :location, class:"form-control", id:"shop-location", placeholder:"例）東京都千代田区千代田1-1（1,000文字まで）", rows:"2", maxlength:"1000" %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電話番号
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.telephone_field :phone_number, class:"form-control", id:"shop-phone-number", placeholder:"例）09012345678", maxlength:"12" %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          営業時間
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <div class="d-flex justify-content-between m-2">
+        <%= f.label :opening_time, "開店時間", {class:"flex-grow-1 ml-3"} %>
+        <%= f.time_select :opening_time, {include_blank: true, minute_step: 5}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
+        </div>
+        <div class="d-flex justify-content-between m-2">
+        <%= f.label :closing_time, "閉店時間", {class:"flex-grow-1 ml-3"} %>
+        <%= f.time_select :closing_time, {include_blank: true, minute_step: 5}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          駐車場の有無
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:parking_id, Presence.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-parking"}) %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          クレジットカードの利用
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:credit_card_id, Usability.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-credit-card"}) %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電子マネーの利用
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:electronic_money_id, Usability.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-electronic-money"}) %>
+      </div>
+
+      <div class="sell-btn-contents">
+      <%= f.submit "出品する" ,class:"btn btn-success" %>
+    </div>
 
     <% end %>
   </div>
 </div>
-<%= render "shared/footer"%>
+<%= render "shared/second-footer"%>
