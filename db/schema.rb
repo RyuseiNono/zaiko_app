@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 2020_12_30_060007) do
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "prefecture_id", null: false
     t.text "location", null: false
     t.string "phone_number", null: false
-    t.integer "prefecture_id"
-    t.time "opening_time"
-    t.time "closing_time"
-    t.integer "parking_id"
-    t.integer "credit_card_id"
-    t.integer "electronic_money_id"
+    t.time "opening_time", null: false
+    t.time "closing_time", null: false
+    t.integer "parking_id", null: false
+    t.integer "credit_card_id", null: false
+    t.integer "electronic_money_id", null: false
     t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
