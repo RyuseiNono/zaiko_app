@@ -1,0 +1,15 @@
+
+<%= render "shared/header"%>
+<div class="container my-3">
+<%= form_with model:@shop ,local: true do |f| %>
+  <%= @shop.contents %>
+  <%= @shop.day %>
+  <div class="actions">
+    <%= f.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '投稿する' %>
+  </div>
+<% end %>
+</div>
+<%= render "shared/second-footer"%>

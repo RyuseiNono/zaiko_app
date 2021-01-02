@@ -6,7 +6,7 @@ class Shop < ApplicationRecord
   with_options presence: true do
     validates :name,             length: { maximum: 40 }
     validates :location,         length: { maximum: 1000 }
-    validates :phone_number,     format: { with: /\A[\d]{1,}\z/ }
+    validates :phone_number,     format: { with: /\A\d{1,}\z/ }
     validates :prefecture_id
   end
   with_options presence: { message: 'が不正です' } do
@@ -24,5 +24,4 @@ class Shop < ApplicationRecord
   belongs_to :prefecture
   belongs_to :presence
   belongs_to :usability
-
 end

@@ -15,7 +15,7 @@ describe Admin do
       it 'nameが空だと登録できない' do
         @admin.name = ''
         @admin.valid?
-        expect(@admin.errors.full_messages).to include("店名を入力してください")
+        expect(@admin.errors.full_messages).to include('店名を入力してください')
       end
 
       it 'emailが空では登録できない' do

@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :shops do
     resources :items
   end
+  post 'shops/confirm'
 end

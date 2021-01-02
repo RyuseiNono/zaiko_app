@@ -2,7 +2,7 @@
 <div class="container my-3">
   <p class="h4 font-weight-bold text-center">店舗の情報を入力</p>
     <div class="">
-    <%= form_with model:@shop ,local: true do |f| %>
+    <%= form_with model:@shop ,local: true, url: {action: 'confirm'} do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
       <div class="form-group">
@@ -91,7 +91,7 @@
       </div>
 
       <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"btn btn-success" %>
+      <%= f.submit "確認画面へ" ,class:"btn btn-success" %>
     </div>
 
     <% end %>

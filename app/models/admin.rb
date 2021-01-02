@@ -6,7 +6,6 @@ class Admin < ApplicationRecord
 
   has_many :shops
 
-
   with_options presence: true do
     validates :name
     with_options format: { with: /\A(?=.*?[a-z])[a-z\d]+\z/i } do
