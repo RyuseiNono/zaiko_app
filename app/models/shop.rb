@@ -22,6 +22,7 @@ class Shop < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
-  belongs_to :presence
-  belongs_to :usability
+  belongs_to :parking
+  belongs_to :credit_card
+  belongs_to :electronic_money
 end

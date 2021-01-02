@@ -1,15 +1,38 @@
-
 <%= render "shared/header"%>
 <div class="container my-3">
-<%= form_with model:@shop ,local: true do |f| %>
-  <%= @shop.contents %>
-  <%= @shop.day %>
-  <div class="actions">
-    <%= f.submit '投稿画面に戻る', name: 'back' %>
-  </div>
-  <div class="actions">
-    <%= f.submit '投稿する' %>
-  </div>
-<% end %>
+  <p class="h4 font-weight-bold text-center">店舗の情報を確認</p>
+    <div>
+      <p>店舗名:<%= @shop.name %></p>
+      <p>店舗の都道府県:<%= @shop.prefecture.name %></p>
+      <p>所在地:<%= @shop.location %></p>
+      <p>電話番号:<%= @shop.phone_number %></p>
+      <p>営業時間:</p>
+      <p>開店時間：<%= @shop.opening_time %></p>
+      <p>閉店時間：<%= @shop.closing_time %></p>
+      <p>駐車場の有無:<%= @shop.parking.name %></p>
+      <p>クレジットカードの利用:<%= @shop.credit_card.name %></p>
+      <p>電子マネーの利用:<%= @shop.electronic_money.name %></p>
+    </div>
+
+    <%= form_with model:@shop ,local: true do |f| %>
+      <div>
+        <%= f.hidden_field :image %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :prefecture_id %>
+        <%= f.hidden_field :location %>
+        <%= f.hidden_field :phone_number %>
+        <%= f.hidden_field :opening_time %>
+        <%= f.hidden_field :closing_time %>
+        <%= f.hidden_field :parking_id %>
+        <%= f.hidden_field :credit_card_id %>
+        <%= f.hidden_field :electronic_money_id %>
+      </div>
+
+
+      <div class="sell-btn-contents">
+        <%= f.submit '修正する' ,class:"btn btn-secondary" ,name: 'back' %>
+        <%= f.submit "店舗登録" ,class:"btn btn-success" %>
+      </div>
+    <% end %>
 </div>
 <%= render "shared/second-footer"%>

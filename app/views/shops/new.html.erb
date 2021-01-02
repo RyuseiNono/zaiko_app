@@ -2,7 +2,7 @@
 <div class="container my-3">
   <p class="h4 font-weight-bold text-center">店舗の情報を入力</p>
     <div class="">
-    <%= form_with model:@shop ,local: true, url: {action: 'confirm'} do |f| %>
+    <%= form_with model:@shop ,local: true, url: confirm_shops_path do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
       <div class="form-group">
@@ -71,7 +71,7 @@
           駐車場の有無
           <span class="badge badge-danger">必須</span>
         </div>
-        <%= f.collection_select(:parking_id, Presence.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-parking"}) %>
+        <%= f.collection_select(:parking_id, Parking.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-parking"}) %>
       </div>
 
       <div class="form-group">
@@ -79,7 +79,7 @@
           クレジットカードの利用
           <span class="badge badge-danger">必須</span>
         </div>
-        <%= f.collection_select(:credit_card_id, Usability.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-credit-card"}) %>
+        <%= f.collection_select(:credit_card_id, CreditCard.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-credit-card"}) %>
       </div>
 
       <div class="form-group">
@@ -87,7 +87,7 @@
           電子マネーの利用
           <span class="badge badge-danger">必須</span>
         </div>
-        <%= f.collection_select(:electronic_money_id, Usability.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-electronic-money"}) %>
+        <%= f.collection_select(:electronic_money_id, ElectronicMoney.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-electronic-money"}) %>
       </div>
 
       <div class="sell-btn-contents">
