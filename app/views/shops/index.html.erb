@@ -9,5 +9,8 @@
   <div class="row">
     <%= render partial: "shop" ,collection:  @shops%>
   </div>
+  <div class="m-3">
+    <%= paginate(@shops) %>
+  </div>
 </div>
 <%= render "shared/footer"%>
