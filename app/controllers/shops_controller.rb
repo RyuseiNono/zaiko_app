@@ -9,10 +9,12 @@ class ShopsController < ApplicationController
 
   def confirm
     @shop = Shop.new(shop_params)
+    # @shop.image.attach(shop_params[:image])
     render :new if @shop.invalid?
   end
 
   def create
+    binding.pry
     @shop = Shop.new(shop_params)
     render :new and return if params[:back] || !@shop.save
   end
@@ -20,9 +22,9 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    shop_params = params.require(:shop).permit(:image, :name, :prefecture_id, :location, :phone_number, \
-                                               :parking_id, :credit_card_id, :electronic_money_id, \
-                                               :opening_time, :closing_time)\
+    shop_params = params.require(:shop).permit(:name, :prefecture_id, :location, :phone_number, \
+                                               :opening_time, :closing_time, \
+                                               :parking_id, :credit_card_id, :electronic_money_id) \
                         .merge(admin_id: current_admin[:id])
     # 全角とハイフンの処理
     shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚー', '0-9a-zA-Z-').gsub(/[−-]/, '')

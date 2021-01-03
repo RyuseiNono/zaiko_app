@@ -1,14 +1,14 @@
 <%= render "shared/header"%>
 <div class="container my-3">
   <p class="h4 font-weight-bold text-center">店舗の情報を入力</p>
-    <div class="">
+  <div>
     <%= form_with model:@shop ,local: true, url: confirm_shops_path do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
       <div class="form-group">
         <div class="weight-bold-text">
           店舗画像
-          <span class="badge badge-danger">必須</span>
+          <span class="badge badge-secondary">任意</span>
         </div>
         <div class="my-3">
           <p>
@@ -91,9 +91,8 @@
       </div>
 
       <div class="sell-btn-contents">
-      <%= f.submit "確認画面へ" ,class:"btn btn-success" %>
-    </div>
-
+        <%= f.submit "確認画面へ" ,class:"btn btn-success" %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -1,18 +1,88 @@
 <%= render "shared/header"%>
 <div class="container my-3">
   <p class="h4 font-weight-bold text-center">店舗の情報を確認</p>
-    <div>
-      <p>店舗名:<%= @shop.name %></p>
-      <p>店舗の都道府県:<%= @shop.prefecture.name %></p>
-      <p>所在地:<%= @shop.location %></p>
-      <p>電話番号:<%= @shop.phone_number %></p>
-      <p>営業時間:</p>
-      <p>開店時間：<%= format("%02d:%02d", @shop.opening_time.hour, @shop.opening_time.min) %></p>
-      <p>閉店時間：<%= format("%02d:%02d", @shop.closing_time.hour, @shop.closing_time.min) %></p>
-      <p>駐車場の有無:<%= @shop.parking.name %></p>
-      <p>クレジットカードの利用:<%= @shop.credit_card.name %></p>
-      <p>電子マネーの利用:<%= @shop.electronic_money.name %></p>
-    </div>
+
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗画像
+          <span class="badge badge-secondary">任意</span>
+        </div>
+        <div>
+          <p class="alert alert-secondary mb-0"><%= puts @shop.image %></p>
+          </div>
+        <div class="image-list", id="image-list"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗名
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗の都道府県
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.prefecture.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          所在地
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.location %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電話番号
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.phone_number %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          営業時間
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="weight-bold-text ml-3">開店時間</p>
+        <p class="alert alert-secondary mb-0 mb-3"><%= format("%02d:%02d", @shop.opening_time.hour, @shop.opening_time.min) %></p>
+        <p class="weight-bold-text ml-3">閉店時間</p>
+        <p class="alert alert-secondary mb-0"><%= format("%02d:%02d", @shop.closing_time.hour, @shop.closing_time.min) %></p>
+      </div>
+
+      <div class="form-group ">
+        <div class="weight-bold-text">
+          駐車場の有無
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.parking.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          クレジットカードの利用
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.credit_card.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電子マネーの利用
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.electronic_money.name %></p>
+      </div>
+
+
+
 
     <%= form_with model:@shop ,local: true do |f| %>
       <div>
