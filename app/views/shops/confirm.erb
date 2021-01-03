@@ -7,8 +7,8 @@
       <p>所在地:<%= @shop.location %></p>
       <p>電話番号:<%= @shop.phone_number %></p>
       <p>営業時間:</p>
-      <p>開店時間：<%= @shop.opening_time %></p>
-      <p>閉店時間：<%= @shop.closing_time %></p>
+      <p>開店時間：<%= format("%02d:%02d", @shop.opening_time.hour, @shop.opening_time.min) %></p>
+      <p>閉店時間：<%= format("%02d:%02d", @shop.closing_time.hour, @shop.closing_time.min) %></p>
       <p>駐車場の有無:<%= @shop.parking.name %></p>
       <p>クレジットカードの利用:<%= @shop.credit_card.name %></p>
       <p>電子マネーの利用:<%= @shop.electronic_money.name %></p>

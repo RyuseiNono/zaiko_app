@@ -58,11 +58,11 @@
         </div>
         <div class="d-flex justify-content-between m-2">
         <%= f.label :opening_time, "開店時間", {class:"flex-grow-1 ml-3"} %>
-        <%= f.time_select :opening_time, {selected:0, minute_step: 5}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
+        <%= f.time_select :opening_time, {selected:0, minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
         </div>
         <div class="d-flex justify-content-between m-2">
         <%= f.label :closing_time, "閉店時間", {class:"flex-grow-1 ml-3"} %>
-        <%= f.time_select :closing_time, {selected:0, minute_step: 5}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
+        <%= f.time_select :closing_time, {selected:0, minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
         </div>
       </div>
 
