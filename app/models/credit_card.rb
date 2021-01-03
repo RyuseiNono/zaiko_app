@@ -3,8 +3,7 @@ class CreditCard < ActiveHash::Base
   has_many :shops
 
   self.data = [
-    # { id: 1, name: '--' },
-    { id: 2, name: '可' },
-    { id: 3, name: '不可' }
+    { id: 1, name: '可' },
+    { id: 2, name: '不可' }
   ]
 end

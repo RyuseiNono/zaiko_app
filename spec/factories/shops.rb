@@ -3,12 +3,12 @@ FactoryBot.define do
     name                     { "#{Faker::Address.city}店" }
     location                 { Faker::Address.state }
     phone_number             { Faker::PhoneNumber.phone_number.gsub(/-/, '') }
-    prefecture_id            { 1 }
+    prefecture_id            { rand(2..Prefecture.all.length+1) }
     opening_time             { '10:00:00' }
     closing_time             { '20:00:00' }
-    parking_id               { 1 }
-    credit_card_id           { 1 }
-    electronic_money_id      { 1 }
+    parking_id               { rand(1..Parking.all.length)}
+    credit_card_id           { rand(1..CreditCard.all.length) }
+    electronic_money_id      { rand(1..ElectronicMoney.all.length) }
     association :admin
   end
 end

@@ -3,8 +3,7 @@ class Parking < ActiveHash::Base
   has_many :shops
 
   self.data = [
-    # { id: 1, name: '--' },
-    { id: 2, name: '有' },
-    { id: 3, name: '無' }
+    { id: 1, name: '有' },
+    { id: 2, name: '無' }
   ]
 end

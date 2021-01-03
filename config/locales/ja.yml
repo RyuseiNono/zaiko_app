@@ -13,6 +13,7 @@ ja:
         password_confirmation: パスワード(確認)
       shop:
         name: 店名
+        prefecture_id: 店舗の都道府県
         location: 所在地
         phone_number: 電話番号
         opening_time: 開店時間

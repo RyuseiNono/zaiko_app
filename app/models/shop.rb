@@ -7,7 +7,6 @@ class Shop < ApplicationRecord
     validates :name,             length: { maximum: 40 }
     validates :location,         length: { maximum: 1000 }
     validates :phone_number,     format: { with: /\A\d{1,}\z/ }
-    validates :prefecture_id
   end
   with_options presence: { message: 'が不正です' } do
     validates :opening_time
@@ -15,6 +14,7 @@ class Shop < ApplicationRecord
   end
 
   with_options presence: { message: 'を選択してください' } do
+    validates :prefecture_id
     validates :parking_id
     validates :credit_card_id
     validates :electronic_money_id
