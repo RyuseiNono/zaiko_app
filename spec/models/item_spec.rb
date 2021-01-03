@@ -16,13 +16,13 @@ RSpec.describe Item, type: :model do
       it 'nameが空だと登録できない' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品名を入力してください")
+        expect(@item.errors.full_messages).to include('商品名を入力してください')
       end
 
       it 'countが空だと登録できない' do
         @item.count = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("在庫数を入力してください")
+        expect(@item.errors.full_messages).to include('在庫数を入力してください')
       end
     end
   end

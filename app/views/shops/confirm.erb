@@ -1,0 +1,108 @@
+<%= render "shared/header"%>
+<div class="container my-3">
+  <p class="h4 font-weight-bold text-center">店舗の情報を確認</p>
+
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗画像
+          <span class="badge badge-secondary">任意</span>
+        </div>
+        <div>
+          <p class="alert alert-secondary mb-0"><%= puts @shop.image %></p>
+          </div>
+        <div class="image-list", id="image-list"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗名
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗の都道府県
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.prefecture.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          所在地
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.location %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電話番号
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.phone_number %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          営業時間
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="weight-bold-text ml-3">開店時間</p>
+        <p class="alert alert-secondary mb-0 mb-3"><%= format("%02d:%02d", @shop.opening_time.hour, @shop.opening_time.min) %></p>
+        <p class="weight-bold-text ml-3">閉店時間</p>
+        <p class="alert alert-secondary mb-0"><%= format("%02d:%02d", @shop.closing_time.hour, @shop.closing_time.min) %></p>
+      </div>
+
+      <div class="form-group ">
+        <div class="weight-bold-text">
+          駐車場の有無
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.parking.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          クレジットカードの利用
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.credit_card.name %></p>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電子マネーの利用
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <p class="alert alert-secondary mb-0"><%= @shop.electronic_money.name %></p>
+      </div>
+
+
+
+
+    <%= form_with model:@shop ,local: true do |f| %>
+      <div>
+        <%= f.hidden_field :image %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :prefecture_id %>
+        <%= f.hidden_field :location %>
+        <%= f.hidden_field :phone_number %>
+        <%= f.hidden_field :opening_time %>
+        <%= f.hidden_field :closing_time %>
+        <%= f.hidden_field :parking_id %>
+        <%= f.hidden_field :credit_card_id %>
+        <%= f.hidden_field :electronic_money_id %>
+      </div>
+
+
+      <div class="sell-btn-contents">
+        <%= f.submit '修正する' ,class:"btn btn-secondary" ,name: 'back' %>
+        <%= f.submit "店舗登録" ,class:"btn btn-success" %>
+      </div>
+    <% end %>
+</div>
+<%= render "shared/second-footer"%>
