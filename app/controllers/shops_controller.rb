@@ -9,12 +9,10 @@ class ShopsController < ApplicationController
 
   def confirm
     @shop = Shop.new(shop_params)
-    # @shop.image.attach(shop_params[:image])
     render :new if @shop.invalid?
   end
 
   def create
-    binding.pry
     @shop = Shop.new(shop_params)
     render :new and return if params[:back] || !@shop.save
   end

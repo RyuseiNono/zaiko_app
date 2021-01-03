@@ -3,7 +3,7 @@
   <p class="h4 font-weight-bold text-center">店舗の情報を入力</p>
   <div>
     <%= form_with model:@shop ,local: true, url: confirm_shops_path do |f| %>
-      <%= render 'shared/error_messages', model: f.object %>
+      <%#= render 'shared/error_messages', model: f.object %>
 
       <div class="form-group">
         <div class="weight-bold-text">
@@ -25,6 +25,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.text_field :name, class:"form-control", id:"shop-name", placeholder:"例）八百屋千代田店（40文字まで)", maxlength:"40" %>
+        <% if @shop.errors.full_messages_for(:name).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:name).first %></p>
+        <% end %>
       </div>
 
       <div class="form-group">
@@ -33,6 +36,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected:14}, {class:"form-control", id:"shop-prefecture"}) %>
+        <% if @shop.errors.full_messages_for(:prefecture_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:prefecture_id).first %></p>
+        <% end %>
       </div>
 
       <div class="form-group">
@@ -41,6 +47,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.text_area :location, class:"form-control", id:"shop-location", placeholder:"例）東京都千代田区千代田1-1（1,000文字まで）", rows:"2", maxlength:"1000" %>
+        <% if @shop.errors.full_messages_for(:location).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:location).first %></p>
+        <% end %>
       </div>
 
       <div class="form-group">
@@ -49,6 +58,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.telephone_field :phone_number, class:"form-control", id:"shop-phone-number", placeholder:"例）09012345678", maxlength:"12" %>
+        <% if @shop.errors.full_messages_for(:phone_number).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:phone_number).first %></p>
+        <% end %>
       </div>
 
       <div class="form-group">
@@ -72,6 +84,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.collection_select(:parking_id, Parking.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-parking"}) %>
+        <% if @shop.errors.full_messages_for(:parking_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:parking_id).first %></p>
+        <% end %>
       </div>
 
       <div class="form-group">
@@ -80,6 +95,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.collection_select(:credit_card_id, CreditCard.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-credit-card"}) %>
+        <% if @shop.errors.full_messages_for(:credit_card_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:credit_card_id).first %></p>
+        <% end %>
       </div>
 
       <div class="form-group">
@@ -88,6 +106,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <%= f.collection_select(:electronic_money_id, ElectronicMoney.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-electronic-money"}) %>
+        <% if @shop.errors.full_messages_for(:electronic_money_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:electronic_money_id).first %></p>
+        <% end %>
       </div>
 
       <div class="sell-btn-contents">
