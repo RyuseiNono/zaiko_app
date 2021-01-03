@@ -35,7 +35,7 @@
           店舗の都道府県
           <span class="badge badge-danger">必須</span>
         </div>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected:14}, {class:"form-control", id:"shop-prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected:13}, {class:"form-control", id:"shop-prefecture"}) %>
         <% if @shop.errors.full_messages_for(:prefecture_id).any? %>
           <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:prefecture_id).first %></p>
         <% end %>
