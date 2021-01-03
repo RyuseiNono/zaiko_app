@@ -4,7 +4,7 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shops
+  has_many :shops, dependent: :destroy
 
   with_options presence: true do
     validates :name

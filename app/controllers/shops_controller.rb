@@ -20,7 +20,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    shop_params = params.require(:shop).permit(:name, :prefecture_id, :location, :phone_number, \
+    shop_params = params.require(:shop).permit(:image, :name, :prefecture_id, :location, :phone_number, \
                                                :parking_id, :credit_card_id, :electronic_money_id, \
                                                :opening_time, :closing_time)\
                         .merge(admin_id: current_admin[:id])
