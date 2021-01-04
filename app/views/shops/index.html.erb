@@ -2,7 +2,7 @@
 <div class="container my-3">
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to '店舗を作成する', new_shop_path, class: "btn btn-success mr-1" %></li>
+      <li><%= link_to new_shop_path, class: "btn btn-success mr-1" do%>店舗を作成する  <i class="fab fa-twitter fa-lg fa-spin"></i><% end %></li>
       <li><%= link_to '店舗を編集する', "#", class: "btn btn-secondary mr-1" %></li>
     </ul>
   </div>
