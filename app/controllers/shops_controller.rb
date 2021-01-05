@@ -19,6 +19,14 @@ class ShopsController < ApplicationController
     render :new and return if params[:back] || !@shop.save
   end
 
+  def edit
+
+  end
+
+  def method_name
+
+  end
+
   private
 
   def shop_params
