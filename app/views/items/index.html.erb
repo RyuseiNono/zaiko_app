@@ -1,7 +1,13 @@
 <%= render "shared/header"%>
 <div class="container my-3">
-  <%= link_to  edit_shop_path(@shop), class: "btn btn-secondary m-3" do%>
-  店舗を編集する<i class="fa fa-edit mx-1"></i><% end %>
+  <div class="nav">
+    <ul class="lists-left">
+    <li><%= link_to  edit_shop_path(@shop), class: "btn btn-secondary m-3" do%>
+    店舗を編集する<i class="fa fa-edit mx-1"></i><% end %></li>
+    <li><%= link_to  shop_path(@shop), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger m-3" do%>
+    店舗を削除する<i class="fa fa-edit mx-1"></i><% end %></li>
+    </ul>
+  </div>
   <div class="col-md-10 mx-auto">
     <p class="font-weight-bold h4 my-3">店舗情報</p>
     <table class="table table-sm table-striped table-bordered">
