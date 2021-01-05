@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
-  before_action :set_shop, only: [:edit, :update]
+  before_action :set_shop, only: [:edit, :update, :destroy]
 
   PER = 6
   def index
@@ -27,6 +27,10 @@ class ShopsController < ApplicationController
 
   def update
     render :edit and return unless @shop.update(shop_params)
+  end
+
+  def destroy
+    @shop.destroy
   end
 
   private
