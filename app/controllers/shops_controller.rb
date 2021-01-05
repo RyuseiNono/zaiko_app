@@ -1,7 +1,6 @@
 class ShopsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
-  before_action :set_shop, only: [:destroy, :edit, :update]
-
+  before_action :set_shop, only: [:edit, :update]
 
   PER = 6
   def index
@@ -27,11 +26,7 @@ class ShopsController < ApplicationController
   end
 
   def update
-    if @shop.update(shop_params)
-      # redirect_to url: shop_items_path(@shop.id)
-    else
-      render action: :edit
-    end
+    render :edit and return unless @shop.update(shop_params)
   end
 
   private
@@ -45,7 +40,6 @@ class ShopsController < ApplicationController
     shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚー', '0-9a-zA-Z-').gsub(/[−-]/, '')
     shop_params
   end
-
 
   def set_shop
     @shop = Shop.find(params[:id])
