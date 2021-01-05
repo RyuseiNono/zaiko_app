@@ -1,8 +1,48 @@
 <%= render "shared/header"%>
 <div class="container my-3">
-<%= link_to  edit_shop_path(@shop), class: "btn btn-secondary m-3" do%>
-店舗を編集する<i class="fa fa-edit mx-1"></i><% end %>
-<p><%= @shop.name %></p>
+  <%= link_to  edit_shop_path(@shop), class: "btn btn-secondary m-3" do%>
+  店舗を編集する<i class="fa fa-edit mx-1"></i><% end %>
+  <div class="col-md-10 mx-auto">
+    <p class="font-weight-bold h4 my-3">店舗情報</p>
+    <table class="table table-sm table-striped table-bordered">
+      <tbody>
+        <tr>
+          <th>店舗名<i class="fas fa-store mx-1"></i></th>
+          <td class="w-75"><%= @shop.name %></td>
+        </tr>
+        <tr>
+          <th>住所<i class="fas fa-map-marker-alt mx-1"></i></th>
+          <td class="w-75"><%= @shop.location %></td>
+        </tr>
+        <tr>
+          <th>電話番号<i class="fas fa-phone mx-1"></i></th>
+          <td class="w-75"><%= @shop.phone_number %></td>
+        </tr>
+        <tr>
+          <th>開店時間<i class="fas fa-sun mx-1"></i></th>
+          <td class="w-75"><%= format("%02d時%02d分", @shop.opening_time.hour, @shop.opening_time.min) %></td>
+        </tr>
+        <tr>
+          <th>閉店時間<i class="fas fa-moon mx-1"></i></th>
+          <td class="w-75"><%= format("%02d時%02d分", @shop.closing_time.hour, @shop.closing_time.min) %></td>
+        </tr>
+        <tr>
+          <th>駐車場<i class="fas fa-parking mx-1"></i></th>
+          <td class="w-75"><%= @shop.parking.name %></td>
+        </tr>
+        <tr>
+          <th>クレジットカード<i class="far fa-credit-card mx-1"></i></th>
+          <td class="w-75"><%= @shop.credit_card.name %></td>
+        </tr>
+        <tr>
+          <th>電子マネー<i class="fas fa-mobile-alt mx-1"></i></th>
+          <td class="w-75"><%= @shop.electronic_money.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
 
   <table class="table table-hover">
     <thead>
