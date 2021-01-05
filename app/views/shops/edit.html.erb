@@ -1,11 +1,11 @@
 <%= render "shared/header"%>
 <div class="container my-3">
-  <p class="h4 font-weight-bold text-center">店舗の情報を入力</p>
+  <p class="h4 font-weight-bold text-center">店舗の情報を変更</p>
   <div>
-    <%= form_with model:@shop ,local: true, url: confirm_shops_path do |f| %>
+    <%= form_with model:@shop ,local: true do |f| %>
       <%= render partial: "form" ,locals: { f: f } %>
       <div class="sell-btn-contents">
-        <%= f.submit "確認画面へ" ,class:"btn btn-success" %>
+        <%= f.submit "変更する" ,class:"btn btn-success" %>
       </div>
     <% end %>
   </div>
