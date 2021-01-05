@@ -1,4 +1,7 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :set_shop, only: [:edit, :update]
+
   PER = 6
   def index
     @shops = Shop.page(params[:page]).per(PER)
@@ -19,6 +22,13 @@ class ShopsController < ApplicationController
     render :new and return if params[:back] || !@shop.save
   end
 
+  def edit
+  end
+
+  def update
+    render :edit and return unless @shop.update(shop_params)
+  end
+
   private
 
   def shop_params
@@ -29,5 +39,9 @@ class ShopsController < ApplicationController
     # 全角とハイフンの処理
     shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚー', '0-9a-zA-Z-').gsub(/[−-]/, '')
     shop_params
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:id])
   end
 end

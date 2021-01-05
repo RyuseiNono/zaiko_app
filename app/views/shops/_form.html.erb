@@ -1,0 +1,115 @@
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗画像<i class="fas fa-image mx-1"></i>
+          <span class="badge badge-secondary">任意</span>
+        </div>
+        <div class="my-3">
+          <p>
+            クリックしてファイルをアップロード
+          </p>
+          <%= f.file_field :image, class:"form-control-file", id:"shop-image" %>
+        </div>
+        <div class="image-list", id="image-list"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗名<i class="fas fa-store mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.text_field :name, class:"form-control", id:"shop-name", placeholder:"例）八百屋千代田店（40文字まで)", maxlength:"40" %>
+        <% if @shop.errors.full_messages_for(:name).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:name).first %></p>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          店舗の都道府県<i class="fas fa-globe-asia mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected:13}, {class:"form-control", id:"shop-prefecture"}) %>
+        <% if @shop.errors.full_messages_for(:prefecture_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:prefecture_id).first %></p>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          所在地<i class="fas fa-map-marker-alt mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.text_area :location, class:"form-control", id:"shop-location", placeholder:"例）東京都千代田区千代田1-1（1,000文字まで）", rows:"2", maxlength:"1000" %>
+        <% if @shop.errors.full_messages_for(:location).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:location).first %></p>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電話番号<i class="fas fa-phone mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.telephone_field :phone_number, class:"form-control", id:"shop-phone-number", placeholder:"例）09012345678", maxlength:"12" %>
+        <% if @shop.errors.full_messages_for(:phone_number).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:phone_number).first %></p>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          営業時間<i class="fas fa-clock mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <div class="d-flex justify-content-between m-2">
+        <%= f.label :opening_time, {class:"flex-grow-1 ml-3"} do %>
+        開店時間<i class="fas fa-sun mx-1"></i><% end %>
+        <% if action_name == "new" %>
+        <%= f.time_select :opening_time, {selected:0, minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
+        <% elsif action_name == "edit" %>
+        <%= f.time_select :opening_time, {minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
+        <% end %>
+        </div>
+        <div class="d-flex justify-content-between m-2">
+        <%= f.label :closing_time, {class:"flex-grow-1 ml-3"} do%>
+        閉店時間<i class="fas fa-moon mx-1"></i><% end %>
+        <% if action_name == "new" %>
+        <%= f.time_select :closing_time, {selected:0, minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
+        <% elsif action_name == "edit" %>
+        <%= f.time_select :closing_time, {minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
+        <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          駐車場の有無<i class="fas fa-parking mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:parking_id, Parking.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-parking"}) %>
+        <% if @shop.errors.full_messages_for(:parking_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:parking_id).first %></p>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          クレジットカードの利用<i class="far fa-credit-card mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:credit_card_id, CreditCard.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-credit-card"}) %>
+        <% if @shop.errors.full_messages_for(:credit_card_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:credit_card_id).first %></p>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <div class="weight-bold-text">
+          電子マネーの利用<i class="fas fa-mobile-alt mx-1"></i>
+          <span class="badge badge-danger">必須</span>
+        </div>
+        <%= f.collection_select(:electronic_money_id, ElectronicMoney.all, :id, :name, {include_blank: true}, {class:"form-control", id:"shop-electronic-money"}) %>
+        <% if @shop.errors.full_messages_for(:electronic_money_id).any? %>
+          <p class="alert alert-danger"><%= @shop.errors.full_messages_for(:electronic_money_id).first %></p>
+        <% end %>
+      </div>
