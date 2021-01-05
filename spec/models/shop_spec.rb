@@ -28,7 +28,7 @@ RSpec.describe Shop, type: :model do
       it 'locationが空だと登録できない' do
         @shop.location = ''
         @shop.valid?
-        expect(@shop.errors.full_messages).to include('所在地を入力してください')
+        expect(@shop.errors.full_messages).to include('住所を入力してください')
       end
 
       it 'phone_numberが空だと登録できない' do

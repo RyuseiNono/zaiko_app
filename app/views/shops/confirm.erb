@@ -52,9 +52,9 @@
           <span class="badge badge-danger">必須</span>
         </div>
         <p class="weight-bold-text ml-3">開店時間</p>
-        <p class="alert alert-secondary mb-0 mb-3"><%= format("%02d:%02d", @shop.opening_time.hour, @shop.opening_time.min) %></p>
+        <p class="alert alert-secondary mb-0 mb-3"><%= format("%02d時%02d分", @shop.opening_time.hour, @shop.opening_time.min) %></p>
         <p class="weight-bold-text ml-3">閉店時間</p>
-        <p class="alert alert-secondary mb-0"><%= format("%02d:%02d", @shop.closing_time.hour, @shop.closing_time.min) %></p>
+        <p class="alert alert-secondary mb-0"><%= format("%02d時%02d分", @shop.closing_time.hour, @shop.closing_time.min) %></p>
       </div>
 
       <div class="form-group ">
