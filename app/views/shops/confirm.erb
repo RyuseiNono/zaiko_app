@@ -8,8 +8,14 @@
           店舗画像
           <span class="badge badge-secondary">任意</span>
         </div>
-        <div>
-          <p class="alert alert-secondary mb-0"><%= puts @shop.image %></p>
+          <div>
+            <p class="alert alert-secondary mb-0">
+              <% if @shop.shop_image? %>
+                <%= @shop.shop_image.file.original_filename %>
+              <% else %>
+                画像は選択されていません
+              <% end %>
+            </p>
           </div>
         <div class="image-list", id="image-list"></div>
       </div>
@@ -86,7 +92,8 @@
 
     <%= form_with model:@shop ,local: true do |f| %>
       <div>
-        <%= f.hidden_field :image %>
+        <%= f.hidden_field :shop_image %>
+        <%= f.hidden_field :shop_image_cache %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :prefecture_id %>
         <%= f.hidden_field :location %>

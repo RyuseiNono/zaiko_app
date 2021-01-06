@@ -79,3 +79,4 @@ gem "omniauth-rails_csrf_protection"
 gem "faker-japanese"
 gem 'gimei'
 gem 'kaminari'
+gem 'carrierwave', '~> 2.0'
