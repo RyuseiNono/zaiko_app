@@ -31,3 +31,4 @@ yarn-debug.log*
 .yarn-integrity
 .Ds_Store
 zaiko_app素材
+/public/uploads

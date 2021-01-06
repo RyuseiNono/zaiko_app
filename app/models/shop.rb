@@ -1,6 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :admin
-  has_one_attached :image
+  # has_one_attached :image
+  mount_uploader :shop_image, ShopImageUploader
   has_many :items, dependent: :destroy
 
   with_options presence: true do

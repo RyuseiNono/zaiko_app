@@ -13,6 +13,7 @@ class ShopsController < ApplicationController
   end
 
   def confirm
+    # binding.pry
     @shop = Shop.new(shop_params)
     render :new if @shop.invalid?
   end
@@ -38,7 +39,7 @@ class ShopsController < ApplicationController
   def shop_params
     shop_params = params.require(:shop).permit(:name, :prefecture_id, :location, :phone_number, \
                                                :opening_time, :closing_time, \
-                                               :parking_id, :credit_card_id, :electronic_money_id) \
+                                               :parking_id, :credit_card_id, :electronic_money_id, :shop_image, :shop_image_cache) \
                         .merge(admin_id: current_admin[:id])
     # 全角とハイフンの処理
     shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚー', '0-9a-zA-Z-').gsub(/[−-]/, '')
