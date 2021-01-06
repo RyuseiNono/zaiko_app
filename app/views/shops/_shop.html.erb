@@ -1,10 +1,10 @@
 <div class="col-md-4 h-auto">
   <%= link_to shop_items_path(shop) do %>
     <div class="card m-1 shadow bg-warning">
-      <% if shop.image.attached? %>
-        <%= image_tag shop.image.variant(gravity: :center, resize:"280x245^", crop:"280x245+0+0").processed, class: 'card-img-top' %>
+      <% if shop.shop_image? %>
+        <%= image_tag shop.shop_image.url, class: 'card-img-top img-fluid' %>
       <% else %>
-        <%= image_tag "/yaoya.png", class:"card-img-top" %>
+        <%= image_tag "sample.png", class:"card-img-top" %>
       <% end %>
       <div class="card-body">
         <p class="card-text font-weight-light text-white text-center shop-name"><%= shop.name %></p>

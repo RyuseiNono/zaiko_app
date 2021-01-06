@@ -7,7 +7,8 @@
           <p>
             クリックしてファイルをアップロード
           </p>
-          <%= f.file_field :image, class:"form-control-file", id:"shop-image" %>
+          <%= f.file_field :shop_image, class:"form-control-file", id:"shop-image" %>
+          <%= f.hidden_field :shop_image_cache %>
         </div>
         <div class="image-list", id="image-list"></div>
       </div>
@@ -66,7 +67,7 @@
         開店時間<i class="fas fa-sun mx-1"></i><% end %>
         <% if action_name == "new" %>
         <%= f.time_select :opening_time, {selected:0, minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
-        <% elsif action_name == "edit" %>
+        <% elsif action_name == "edit" || action_name == "confirm" %>
         <%= f.time_select :opening_time, {minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-opening-time"} %>
         <% end %>
         </div>
@@ -75,7 +76,7 @@
         閉店時間<i class="fas fa-moon mx-1"></i><% end %>
         <% if action_name == "new" %>
         <%= f.time_select :closing_time, {selected:0, minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
-        <% elsif action_name == "edit" %>
+        <% elsif action_name == "edit" || action_name == "confirm" %>
         <%= f.time_select :closing_time, {minute_step: 5,ignore_date: true}, {class: 'form-control w-25 mx-1',id:"shop-closing-time"} %>
         <% end %>
         </div>
