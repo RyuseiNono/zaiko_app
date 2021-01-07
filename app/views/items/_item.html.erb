@@ -1,13 +1,12 @@
 <% if item.count == 0 %>
   <tr>
-    <th scope="row"><%= item_counter + 1 %></th>
     <td  class="text-muted"><del><%= item.name %></del></td>
     <td  class="text-muted"><%= item.count %></td>
-  </tr>
 <% else %>
   <tr>
-    <th scope="row"><%= item_counter + 1 %></th>
     <td><%= item.name %></td>
     <td><%= item.count %></td>
-  </tr>
 <% end %>
+    <td class="w-25"><%= link_to  shop_item_path(@shop,item), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger" do%>
+    在庫を削除する<i class="far fa-trash-alt mx-1"></i><% end %></td>
+  </tr>
