@@ -1,0 +1,41 @@
+<%= render "shared/header"%>
+<div class="container my-3">
+  <div class="nav">
+    <ul class="lists-left">
+    <li><%= link_to  shop_items_path(@shop), class: "btn btn-secondary m-3" do%>
+    店舗ページに戻る<i class="fas fa-angle-left mx-1"></i><% end %></li>
+    <li><%= link_to  shops_path, class: "btn btn-secondary m-3" do%>
+    店舗一覧に戻る<i class="fas fa-angle-double-left mx-1"></i><% end %></li>
+    </ul>
+  </div>
+  <div class="col-md-10 mx-auto">
+    <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫情報編集" %></p>
+
+    <%= form_with model: [@shop, @item] do |f| %>
+      商品名：<%= f.text_field :name %>
+      在庫数：<%= f.number_field :count,min: 0, max: 10, value: 1%>
+      <%= f.submit '追加' ,class:"btn btn-primary"%>
+    <% end %>
+
+    <p class="font-weight-bold h4 my-3"><br><%= "#{@shop.name}の在庫情報" %></p>
+    <% if @shop.items.present? %>
+      <div hidden id="items_empty">商品はまだありません。</div>
+      <table class="table table-hover",  id="items_table">
+    <% else %>
+      <div id="items_empty">商品はまだありません。</div>
+      <table hidden class="table table-hover", id="items_table">
+    <% end %>
+        <thead>
+          <tr>
+            <th scope="col">商品名</th>
+            <th scope="col">在庫数</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="items">
+          <%= render partial: "item" ,collection:  @shop.items%>
+        </tbody>
+      </table>
+  </div>
+</div>
+<%= render "shared/second-footer"%>
