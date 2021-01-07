@@ -1,5 +1,13 @@
-<tr>
-  <th scope="row"><%= item_counter + 1 %></th>
-  <td><%= item.name %></td>
-  <td><%= item.count %></td>
-</tr>
+<% if item.count == 0 %>
+  <tr>
+    <th scope="row"><%= item_counter + 1 %></th>
+    <td  class="text-muted"><del><%= item.name %></del></td>
+    <td  class="text-muted"><%= item.count %></td>
+  </tr>
+<% else %>
+  <tr>
+    <th scope="row"><%= item_counter + 1 %></th>
+    <td><%= item.name %></td>
+    <td><%= item.count %></td>
+  </tr>
+<% end %>
