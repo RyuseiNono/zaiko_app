@@ -16,13 +16,21 @@ consumer.subscriptions.create("ItemChannel", {
     const items_table = document.getElementById("items_table");
     const items_empty = document.getElementById("items_empty");
     // 追加する要素の素材を作成
-    const tr = document.createElement("tr");
-    const td_name = document.createElement("td");
-    const td_count = document.createElement("td");
-    const td_Button = document.createElement("td");
+    var tr = document.createElement("tr");
+    var td_name = document.createElement("td");
+    var td_count = document.createElement("td");
+    var td_Button = document.createElement("td");
     // createElementに商品名、在庫数を代入
-    td_name.textContent = data.content.item.name;
     td_count.textContent = data.content.item.count;
+    if (data.content.item.count >= 1) {
+      td_name.textContent = data.content.item.name;
+    } else if (data.content.item.count == 0) {
+      const del = document.createElement("del");
+      del.textContent = data.content.item.name;
+      td_name.appendChild(del);
+      td_name.className = "text-muted";
+      td_count.className = "text-muted";
+    }
     const column = items.appendChild(tr); //itemsにtrを追加
     column.appendChild(td_name); //追加したtrにtd_countを追加
     column.appendChild(td_count); //追加したtrにtd_countを追加
