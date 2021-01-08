@@ -1,6 +1,6 @@
 import consumer from "./consumer";
 
-consumer.subscriptions.create("ItemChannel", {
+consumer.subscriptions.create("ItemCreateChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -20,6 +20,8 @@ consumer.subscriptions.create("ItemChannel", {
     var td_name = document.createElement("td");
     var td_count = document.createElement("td");
     var td_Button = document.createElement("td");
+    // id追加
+    tr.id = `item-#${data.content.item.id}`;
     // createElementに商品名、在庫数を代入
     td_count.textContent = data.content.item.count;
     if (data.content.item.count >= 1) {
@@ -40,7 +42,10 @@ consumer.subscriptions.create("ItemChannel", {
     const addButton = document.createElement("a"); //aタグを作成
     addButton.className = "btn btn-danger"; //addButtonにクラスを追加
     addButton.textContent = "在庫を削除する"; //addButtonに要素を追加
-    addButton.href = `/shops/${data.content.item.shop_id}/items/${data.content.item_id}`; //addButtonにhrefを追加
+    addButton.href = `/shops/${data.content.item.shop_id}/items/${data.content.item.id}`; //addButtonにhrefを追加
+    addButton.dataset.confirm = "この作業は戻せません。本当に削除しますか?"; //addButtonにdata-confirmを追加
+    addButton.dataset.method = "delete"; //addButtonにdata-methodを追加
+    addButton.dataset.remote = "true"; //addButtonにdata-remoteを追加
     // アイコン作成
     const addButtonIcon = document.createElement("i");
     addButtonIcon.className = "far fa-trash-alt mx-1";
