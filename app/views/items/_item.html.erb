@@ -1,12 +1,15 @@
-<% if item.count == 0 %>
-  <tr>
+<tr id = "item-#<%= item.id %>">
+<%=  %>
+  <% if item.count == 0 %>
     <td  class="text-muted"><del><%= item.name %></del></td>
     <td  class="text-muted"><%= item.count %></td>
-<% else %>
-  <tr>
+  <% else %>
     <td><%= item.name %></td>
     <td><%= item.count %></td>
-<% end %>
-    <td class="w-25"><%= link_to  shop_item_path(@shop,item), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger" do%>
-    在庫を削除する<i class="far fa-trash-alt mx-1"></i><% end %></td>
-  </tr>
+  <% end %>
+  <% if action_name == "new" %>
+    <td class="w-25"><%= link_to  shop_item_path(@shop,item), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger",remote: true do%>
+      在庫を削除する<i class="far fa-trash-alt mx-1"></i>
+    <% end %></td>
+  <% end %>
+</tr>

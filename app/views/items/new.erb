@@ -9,20 +9,21 @@
     </ul>
   </div>
   <div class="col-md-10 mx-auto">
-    <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫情報編集" %></p>
-
-    <%= form_with model: [@shop, @item] do |f| %>
-      商品名：<%= f.text_field :name %>
-      在庫数：<%= f.number_field :count,min: 0, max: 10, value: 1%>
-      <%= f.submit '追加' ,class:"btn btn-primary"%>
-    <% end %>
+    <div class="alert alert-primary">
+      <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫追加" %></p>
+      <%= form_with model: [@shop, @item] do |f| %>
+        商品名：<%= f.text_field :name %>
+        在庫数：<%= f.number_field :count,min: 0, max: 10, value: 1%>
+        <%= f.submit '追加' ,class:"btn btn-primary"%>
+      <% end %>
+    </div>
 
     <p class="font-weight-bold h4 my-3"><br><%= "#{@shop.name}の在庫情報" %></p>
     <% if @shop.items.present? %>
-      <div hidden id="items_empty">商品はまだありません。</div>
+      <div hidden id="items_empty">商品はありません。</div>
       <table class="table table-hover",  id="items_table">
     <% else %>
-      <div id="items_empty">商品はまだありません。</div>
+      <div id="items_empty">商品はありません。</div>
       <table hidden class="table table-hover", id="items_table">
     <% end %>
         <thead>
