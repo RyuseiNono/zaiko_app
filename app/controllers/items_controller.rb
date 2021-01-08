@@ -14,7 +14,16 @@ class ItemsController < ApplicationController
     if @item.save
       item_id = Item.order(id: "DESC").limit(1).ids[0] #今投稿したitemのid取得
       items_length = @shop.items.length #データ数０か１以上で場合分けするため
-      ActionCable.server.broadcast 'item_channel', content: {item: @item, item_id: item_id ,items_length: items_length}
+      ActionCable.server.broadcast 'item_create_channel', content: {item: @item, items_length: items_length}
+    end
+  end
+
+  def destroy
+    @shop = Shop.find(params['shop_id'])
+    @item = Item.find(params[:id])
+    if @item.destroy
+      items_length = @shop.items.length #データ数０か１以上で場合分けするため
+      ActionCable.server.broadcast 'item_destroy_channel', content: {item: @item,items_length: items_length}
     end
   end
 
