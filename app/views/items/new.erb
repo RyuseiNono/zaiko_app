@@ -12,7 +12,7 @@
     <div class="alert alert-primary">
       <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫追加" %></p>
       <%= form_with model: [@shop, @item] do |f| %>
-        商品名：<%= f.text_field :name %>
+        商品名：<%= f.text_field :name, id: "add_item_name"%>
         在庫数：<%= f.number_field :count,min: 0, max: 10, value: 1%>
         <%= f.submit '追加' ,class:"btn btn-primary"%>
       <% end %>
@@ -31,10 +31,11 @@
             <th scope="col">商品名</th>
             <th scope="col">在庫数</th>
             <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody id="items">
-          <%= render partial: "item" ,collection:  @shop.items%>
+            <%= render partial: "item_new" ,collection:  @shop.items %>
         </tbody>
       </table>
   </div>

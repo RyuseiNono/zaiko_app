@@ -66,7 +66,7 @@
           </tr>
         </thead>
         <tbody id="items">
-          <%= render partial: "item" ,collection:  @shop.items%>
+          <%= render partial: "item_index" ,collection:  @shop.items%>
         </tbody>
       </table>
     <% else %>
@@ -74,4 +74,4 @@
     <% end %>
   </div>
 </div>
-<%= render "shared/footer"%>
+<%= render "shared/second-footer"%>

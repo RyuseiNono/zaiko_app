@@ -18,6 +18,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      ActionCable.server.broadcast 'item_update_channel', content: {item: @item}
+    end
+  end
+
   def destroy
     @shop = Shop.find(params['shop_id'])
     @item = Item.find(params[:id])

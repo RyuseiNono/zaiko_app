@@ -15,6 +15,7 @@ consumer.subscriptions.create("ItemCreateChannel", {
     const items = document.getElementById("items");
     const items_table = document.getElementById("items_table");
     const items_empty = document.getElementById("items_empty");
+    const add_item_name = document.getElementById("add_item_name");
     // 追加する要素の素材を作成
     var tr = document.createElement("tr");
     var td_name = document.createElement("td");
@@ -60,6 +61,6 @@ consumer.subscriptions.create("ItemCreateChannel", {
       items_empty.hidden = true;
     }
     // 以下入力欄を空に
-    item_name.value = "";
+    add_item_name.value = "";
   },
 });
