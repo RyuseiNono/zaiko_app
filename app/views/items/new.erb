@@ -45,13 +45,13 @@
                     <%= f.text_field :name, form:"form-#clone", id:"item_name_new-#clone" %>
                 </td>
                 <td>
-                    <%= f.text_field :price, form:"form-#clone", id:"item_price_new-#clone", size: 8, maxlength:8 %>
+                    <%= f.text_field :price, form:"form-#clone", id:"item_price_new-#clone", size: 8, maxlength:8%>
                 </td>
                 <td>
                     <%= f.number_field :count, min: 0, max: 99, form:"form-#clone", id:"item_count_new-#clone" %>
                 </td>
                 <td class="w-25">
-                  <%= button_tag type: 'submit', class: "btn btn-success", form:"form-#clone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-success", form:"form-#clone", disabled: true do %>
                     在庫を更新する<i class="fas fa-sync mx-1"></i>
                   <% end %>
                 </td>
