@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @shop = Shop.find(params['shop_id'])
     @item = Item.new(item_params)
     if @item.save
@@ -37,7 +38,10 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :count, :price).merge(shop_id: params[:shop_id])
+    item_params = params.require(:item).permit(:name, :count, :price).merge(shop_id: params[:shop_id])
+    # 全角の処理
+    item_params[:price] = item_params[:price].tr('０-９', '0-9')
+    item_params
   end
 
   def set_item
