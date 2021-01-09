@@ -1,11 +1,11 @@
 <tr id = "item-#<%= item_index.id %>">
   <% if item_index.count == 0 %>
     <td  class="text-muted", id ="item_name_index-#<%= item_index.id %>"><%= item_index.name %></td>
-    <td  class="text-muted", id ="item_count_index-#<%= item_index.id %>"><%= item_index.price %>円</td>
+    <td  class="text-muted", id ="item_price_index-#<%= item_index.id %>"><%= item_index.price %>円</td>
     <td  class="text-muted", id ="item_count_index-#<%= item_index.id %>"><%= item_index.count %></td>
   <% else %>
     <td id ="item_name_index-#<%= item_index.id %>"><%= item_index.name %></td>
-    <td id ="item_count_index-#<%= item_index.id %>"><%= item_index.price %>円</td>
+    <td id ="item_price_index-#<%= item_index.id %>"><%= item_index.price %>円</td>
     <td id ="item_count_index-#<%= item_index.id %>"><%= item_index.count %></td>
   <% end %>
 </tr>

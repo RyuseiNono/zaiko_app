@@ -64,18 +64,21 @@ consumer.subscriptions.create("ItemCreateChannel", {
       var new_item = clone_index.cloneNode(true);
       var new_item_tr = new_item;
       var new_item_name = new_item.getElementsByTagName("td")[0];
-      var new_item_count = new_item.getElementsByTagName("td")[1];
+      var new_item_price = new_item.getElementsByTagName("td")[1];
+      var new_item_count = new_item.getElementsByTagName("td")[2];
 
       // 構築
       new_item.hidden = false;
       new_item_tr.id = `item-#${item.id}`;
       new_item_name.textContent = item.name;
+      new_item_price.textContent = `${item.price}円`;
       new_item_count.textContent = item.count;
       items.appendChild(new_item);
 
       // countが0の時の処理
       if (item.count == 0) {
         new_item_name.classList.add("text-muted");
+        new_item_price.classList.add("text-muted");
         new_item_count.classList.add("text-muted");
       }
     }
