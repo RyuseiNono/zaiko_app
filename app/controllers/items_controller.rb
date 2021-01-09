@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @shop = Shop.find(params['shop_id'])
   end
@@ -19,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    binding.pry
     @item = Item.find(params[:id])
     if @item.update(item_params)
       ActionCable.server.broadcast 'item_update_channel', content: {item: @item}
@@ -36,7 +38,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :count).merge(shop_id: params[:shop_id])
+    params.require(:item).permit(:name, :count, :price).merge(shop_id: params[:shop_id])
   end
 
   def set_item

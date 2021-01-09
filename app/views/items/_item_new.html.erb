@@ -4,7 +4,10 @@
         <%= f.text_field :name, form:"form-##{item_new.id}", id:"item_name_new-##{item_new.id}" %>
     </td>
     <td>
-        <%= f.number_field :count, min: 0, max: 10, form:"form-##{item_new.id}", id:"item_count_new-##{item_new.id}" %>
+        <%= f.text_field :price, form:"form-##{item_new.id}", id:"item_price_new-##{item_new.id}", size: 8, maxlength:8 %>
+    </td>
+    <td>
+        <%= f.number_field :count, min: 0, max: 99, form:"form-##{item_new.id}", id:"item_count_new-##{item_new.id}" %>
     </td>
     <td class="w-25">
       <%= button_tag type: 'submit', class: "btn btn-success", form:"form-##{item_new.id}" do %>

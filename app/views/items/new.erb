@@ -13,7 +13,8 @@
       <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫追加" %></p>
       <%= form_with model: [@shop, @item] do |f| %>
         商品名：<%= f.text_field :name, id: "add_item_name"%>
-        在庫数：<%= f.number_field :count,min: 0, max: 10, value: 1%>
+        値段：<%= f.text_field :price, size: 8, maxlength:8,id: "add_item_price" %>
+        在庫数：<%= f.number_field :count,min: 0, max: 99, value: 1,id:"add_item_count" %>
         <%= f.submit '追加' ,class:"btn btn-primary"%>
       <% end %>
     </div>
@@ -29,6 +30,7 @@
         <thead>
           <tr>
             <th scope="col">商品名</th>
+            <th scope="col">値段</th>
             <th scope="col">在庫数</th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -43,7 +45,10 @@
                     <%= f.text_field :name, form:"form-#clone", id:"item_name_new-#clone" %>
                 </td>
                 <td>
-                    <%= f.number_field :count, min: 0, max: 10, form:"form-#clone", id:"item_count_new-#clone" %>
+                    <%= f.text_field :price, form:"form-#clone", id:"item_price_new-#clone", size: 8, maxlength:8 %>
+                </td>
+                <td>
+                    <%= f.number_field :count, min: 0, max: 99, form:"form-#clone", id:"item_count_new-#clone" %>
                 </td>
                 <td class="w-25">
                   <%= button_tag type: 'submit', class: "btn btn-success", form:"form-#clone" do %>

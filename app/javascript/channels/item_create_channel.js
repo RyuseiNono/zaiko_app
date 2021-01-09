@@ -24,7 +24,8 @@ consumer.subscriptions.create("ItemCreateChannel", {
       var new_item_tr = new_item;
       var new_item_form = new_item.getElementsByTagName("form")[0];
       var new_item_input_name = new_item.getElementsByTagName("input")[1];
-      var new_item_input_count = new_item.getElementsByTagName("input")[2];
+      var new_item_input_price = new_item.getElementsByTagName("input")[2];
+      var new_item_input_count = new_item.getElementsByTagName("input")[3];
       var new_item_button_update = new_item.getElementsByTagName("button")[0];
       var new_item_button_delete = new_item.getElementsByTagName("a")[0];
 
@@ -37,6 +38,10 @@ consumer.subscriptions.create("ItemCreateChannel", {
       new_item_input_name.id = `item_name_new-#${item.id}`;
       new_item_input_name.setAttribute("form", `form-#${item.id}`);
       new_item_input_name.name = "item[name]";
+      new_item_input_price.value = item.price;
+      new_item_input_price.id = `item_price_new-#${item.id}`;
+      new_item_input_price.setAttribute("form", `form-#${item.id}`);
+      new_item_input_price.name = "item[name]";
       new_item_input_count.value = item.count;
       new_item_input_count.id = `item_count_new-#${item.id}`;
       new_item_input_count.setAttribute("form", `form-#${item.id}`);
@@ -47,7 +52,11 @@ consumer.subscriptions.create("ItemCreateChannel", {
 
       // 入力欄消去
       const add_item_name = document.getElementById("add_item_name");
+      const add_item_price = document.getElementById("add_item_price");
+      const add_item_count = document.getElementById("add_item_count");
       add_item_name.value = "";
+      add_item_price.value = "";
+      add_item_count.value = 1;
     }
     // 　index
     if (clone_index != null) {
