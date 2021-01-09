@@ -40,8 +40,8 @@ consumer.subscriptions.create("ItemUpdateChannel", {
         new_item_name.classList.add("text-muted");
         new_item_count.classList.add("text-muted");
       } else {
-        new_item_name.classList.remve("text-muted");
-        new_item_count.classList.remve("text-muted");
+        new_item_name.classList.remove("text-muted");
+        new_item_count.classList.remove("text-muted");
       }
     }
   },
