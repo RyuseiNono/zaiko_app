@@ -2,7 +2,7 @@
 <div class="container my-3">
   <p class="h4 font-weight-bold text-center">店舗の情報を変更</p>
   <div>
-    <%= form_with model:@shop ,local: true do |f| %>
+    <%= form_with model: @shop ,local: true do |f| %>
       <%= render partial: "form" ,locals: { f: f } %>
       <div class="sell-btn-contents">
         <%= f.submit "変更" ,class:"btn btn-success" %>

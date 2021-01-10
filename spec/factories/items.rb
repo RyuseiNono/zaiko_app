@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :item do
     name                     { Faker::Food.fruits }
-    count                    { rand(0..100) }
+    price                    { rand(0..99999999) }
+    count                    { rand(0..99) }
     association :shop
   end
 end

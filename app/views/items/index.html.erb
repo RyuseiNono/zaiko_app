@@ -58,20 +58,30 @@
     </table>
     <p class="font-weight-bold h4 my-3"><br>在庫情報</p>
     <% if @shop.items.present? %>
-      <table class="table table-hover">
+      <div hidden id="items_empty">商品はありません。</div>
+      <table class="table table-hover", id="items_table">
+    <% else %>
+      <div id="items_empty">商品はありません。</div>
+      <table hidden class="table table-hover", id="items_table">
+    <% end %>
         <thead>
           <tr>
             <th scope="col">商品名</th>
+            <th scope="col">値段</th>
             <th scope="col">在庫数</th>
           </tr>
         </thead>
         <tbody id="items">
-          <%= render partial: "item" ,collection:  @shop.items%>
+          <%= render partial: "item_index" ,collection:  @shop.items%>
+            <%# -----追加時クローン用------ %>
+          <tr hidden id = "item-#clone_index">
+              <td id ="item_name_index-#clone"></td>
+              <td id ="item_price_index-#clone"></td>
+              <td id ="item_count_index-#clone"></td>
+          </tr>
+            <%# -----追加時クローン用------ %>
         </tbody>
       </table>
-    <% else %>
-      商品はまだありません。
-    <% end %>
   </div>
 </div>
-<%= render "shared/footer"%>
+<%= render "shared/second-footer"%>

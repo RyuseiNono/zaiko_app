@@ -9,31 +9,58 @@
     </ul>
   </div>
   <div class="col-md-10 mx-auto">
-    <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫情報編集" %></p>
-
-    <%= form_with model: [@shop, @item] do |f| %>
-      商品名：<%= f.text_field :name %>
-      在庫数：<%= f.number_field :count,min: 0, max: 10, value: 1%>
-      <%= f.submit '追加' ,class:"btn btn-primary"%>
-    <% end %>
+    <div class="alert alert-primary">
+      <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫追加" %></p>
+      <%= form_with model: [@shop, @item] do |f| %>
+        商品名：<%= f.text_field :name, id: "add_item_name"%>
+        値段：<%= f.text_field :price, size: 8, maxlength:8,id: "add_item_price" %>
+        在庫数：<%= f.number_field :count,min: 0, max: 99, value: 1,id:"add_item_count" %>
+        <%= f.submit '追加' ,class:"btn btn-primary"%>
+      <% end %>
+    </div>
 
     <p class="font-weight-bold h4 my-3"><br><%= "#{@shop.name}の在庫情報" %></p>
     <% if @shop.items.present? %>
-      <div hidden id="items_empty">商品はまだありません。</div>
-      <table class="table table-hover",  id="items_table">
+      <div hidden id="items_empty">商品はありません。</div>
+      <table class="table table-hover", id="items_table">
     <% else %>
-      <div id="items_empty">商品はまだありません。</div>
+      <div id="items_empty">商品はありません。</div>
       <table hidden class="table table-hover", id="items_table">
     <% end %>
         <thead>
           <tr>
             <th scope="col">商品名</th>
+            <th scope="col">値段</th>
             <th scope="col">在庫数</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody id="items">
-          <%= render partial: "item" ,collection:  @shop.items%>
+            <%= render partial: "item_new" ,collection:  @shop.items %>
+            <%# -----追加時クローン用------ %>
+            <tr hidden id = "item-#clone_new" >
+              <%= form_with id:"form-#clone" do |f| %>
+                <td>
+                    <%= f.text_field :name, form:"form-#clone", id:"item_name_new-#clone" %>
+                </td>
+                <td>
+                    <%= f.text_field :price, form:"form-#clone", id:"item_price_new-#clone", size: 8, maxlength:8%>
+                </td>
+                <td>
+                    <%= f.number_field :count, min: 0, max: 99, form:"form-#clone", id:"item_count_new-#clone" %>
+                </td>
+                <td class="w-25">
+                  <%= button_tag type: 'submit', class: "btn btn-success", form:"form-#clone" do %>
+                    在庫を更新する<i class="fas fa-sync mx-1"></i>
+                  <% end %>
+                </td>
+                <td class="w-25"><%= link_to  "clone", method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger",remote: true do%>
+                  在庫を削除する<i class="far fa-trash-alt mx-1"></i>
+                <% end %></td>
+              <% end %>
+            </tr>
+            <%# -----追加時クローン用------ %>
         </tbody>
       </table>
   </div>

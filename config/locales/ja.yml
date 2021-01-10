@@ -23,4 +23,6 @@ ja:
         electronic_money_id: 電子マネーの利用
       item:
         name: 商品名
+        price: 値段
         count: 在庫数
+        shop: 店舗

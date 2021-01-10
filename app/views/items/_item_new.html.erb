@@ -1,0 +1,21 @@
+<tr id = "item-#<%= item_new.id %>">
+  <%= form_with model: [@shop, item_new], id:"form-##{item_new.id}" do |f| %>
+    <td>
+        <%= f.text_field :name, form:"form-##{item_new.id}", id:"item_name_new-##{item_new.id}" %>
+    </td>
+    <td>
+        <%= f.text_field :price, form:"form-##{item_new.id}", id:"item_price_new-##{item_new.id}", size: 8, maxlength:8 %>
+    </td>
+    <td>
+        <%= f.number_field :count, min: 0, max: 99, form:"form-##{item_new.id}", id:"item_count_new-##{item_new.id}" %>
+    </td>
+    <td class="w-25">
+      <%= button_tag type: 'submit', class: "btn btn-success", form:"form-##{item_new.id}" do %>
+        在庫を更新する<i class="fas fa-sync mx-1"></i>
+      <% end %>
+    </td>
+    <td class="w-25"><%= link_to  shop_item_path(@shop,item_new), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger",remote: true do%>
+      在庫を削除する<i class="far fa-trash-alt mx-1"></i>
+    <% end %></td>
+  <% end %>
+</tr>

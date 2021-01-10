@@ -1,6 +1,6 @@
-class ItemChannel < ApplicationCable::Channel
+class ItemDestroyChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "item_channel"
+    stream_from "item_destroy_channel"
   end
 
   def unsubscribed
