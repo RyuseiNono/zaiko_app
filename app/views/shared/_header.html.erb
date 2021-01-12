@@ -16,12 +16,12 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to '店舗を編集する', shops_path, class: "category-list" %></li>
-      <li><%= link_to 'huga', "#", class: "brand-list" %></li>
+      <li><%= link_to '', "#", class: "category-list" %></li>
+      <li><%= link_to '', "#", class: "brand-list" %></li>
     </ul>
     <ul class='lists-right'>
       <% if admin_signed_in?%>
-        <li><%= link_to "#", class: "btn btn-info mr-1" do%>
+        <li><%= link_to my_shops_path, class: "btn btn-info mr-1" do%>
         <%= current_admin.name %><i class="fas fa-user mx-1"></i><% end %></li>
         <li><%= link_to  destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" do%>
         ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
