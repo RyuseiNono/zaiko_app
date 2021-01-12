@@ -1,11 +1,12 @@
 class ShopsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_shop, only: [:edit, :update, :destroy]
+  before_action :user_can_edit?, only: [:edit, :update, :destroy]
 
   PER = 6
   def index
     @shops = Shop.order(updated_at: "DESC").page(params[:page]).per(PER)
-    # @shops = Shop.all
+    @shop_count = Shop.all.count
   end
 
   def new
@@ -13,7 +14,6 @@ class ShopsController < ApplicationController
   end
 
   def confirm
-    # binding.pry
     @shop = Shop.new(shop_params)
     render :new if @shop.invalid?
   end
@@ -36,6 +36,7 @@ class ShopsController < ApplicationController
 
   def my
     @shops = Shop.where(admin_id: current_admin[:id]).order(updated_at: "DESC").page(params[:page]).per(PER)
+    @shop_count = Shop.where(admin_id: current_admin[:id]).count
   end
 
   private
@@ -47,10 +48,15 @@ class ShopsController < ApplicationController
                         .merge(admin_id: current_admin[:id])
     # 全角とハイフンの処理
     shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚー', '0-9a-zA-Z-').gsub(/[−-]/, '')
+    # 全角とハイフンの処理
     shop_params
   end
 
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def user_can_edit?
+    return redirect_to root_path unless @shop.admin.id == current_admin.id
   end
 end
