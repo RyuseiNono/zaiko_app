@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :shops do
+    collection do
+      get :my
+    end
     resources :items
     collection do
       post :confirm

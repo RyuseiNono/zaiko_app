@@ -4,7 +4,7 @@ class ShopsController < ApplicationController
 
   PER = 6
   def index
-    @shops = Shop.page(params[:page]).per(PER)
+    @shops = Shop.order(updated_at: "DESC").page(params[:page]).per(PER)
     # @shops = Shop.all
   end
 
@@ -32,6 +32,10 @@ class ShopsController < ApplicationController
 
   def destroy
     @shop.destroy
+  end
+
+  def my
+    @shops = Shop.where(admin_id: current_admin[:id]).order(updated_at: "DESC").page(params[:page]).per(PER)
   end
 
   private
