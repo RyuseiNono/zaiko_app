@@ -10,12 +10,14 @@
   </div>
   <div class="col-md-10 mx-auto">
     <div class="alert alert-primary">
-      <p class="font-weight-bold h3"><br><%= "#{@shop.name}の在庫追加" %></p>
+      <p class="font-weight-bold h3"><%= "#{@shop.name}の在庫追加" %></p>
       <%= form_with model: [@shop, @item] do |f| %>
-        商品名：<%= f.text_field :name, id: "add_item_name"%>
-        値段：<%= f.text_field :price, size: 8, maxlength:8,id: "add_item_price" %>
-        在庫数：<%= f.number_field :count,min: 0, max: 99, value: 1,id:"add_item_count" %>
-        <%= f.submit '追加' ,class:"btn btn-primary"%>
+        <ul class="d-flex justify-content-around m-3">
+          <li class="form-inline">商品名：<%= f.text_field :name, id: "add_item_name", class:"form-control" %></li>
+          <li class="form-inline">値段：<%= f.text_field :price, size: 8, maxlength:8, id: "add_item_price", class:"form-control" %></li>
+          <li class="form-inline">在庫数：<%= f.number_field :count,min: 0, max: 99, value: 1, id:"add_item_count", class:"form-control" %></li>
+          <li><%= f.submit '追加' ,class:"btn btn-primary" %></li>
+        </ul>
       <% end %>
     </div>
 
