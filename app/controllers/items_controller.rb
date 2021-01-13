@@ -37,9 +37,8 @@ class ItemsController < ApplicationController
   def item_params
     item_params = params.require(:item).permit(:name, :count, :price).merge(shop_id: params[:shop_id])
     # 全角の処理
-    item_params[:price] = item_params[:price].tr('０-９', '0-9')
-    # 全角の処理
-    item_params
+    item_params = Item.price_converter(item_params)
+    return item_params
   end
 
   def set_shop

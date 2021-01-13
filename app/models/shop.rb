@@ -26,4 +26,10 @@ class Shop < ApplicationRecord
   belongs_to :parking
   belongs_to :credit_card
   belongs_to :electronic_money
+
+    # 全角とハイフンの処理
+  def self.phone_number_converter(shop_params)
+    shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z').gsub(/[-,ー]/, '')
+    return shop_params
+  end
 end

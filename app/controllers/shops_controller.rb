@@ -47,9 +47,8 @@ class ShopsController < ApplicationController
                                                :parking_id, :credit_card_id, :electronic_money_id, :shop_image, :shop_image_cache) \
                         .merge(admin_id: current_admin[:id])
     # 全角とハイフンの処理
-    shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚー', '0-9a-zA-Z-').gsub(/[−-]/, '')
-    # 全角とハイフンの処理
-    shop_params
+    shop_params = Shop.phone_number_converter(shop_params)
+    return shop_params
   end
 
   def set_shop
