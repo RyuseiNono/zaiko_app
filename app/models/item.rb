@@ -11,4 +11,12 @@ class Item < ApplicationRecord
     item_params[:price] = item_params[:price].tr('０-９', '0-9')
     return item_params
   end
+
+  def self.search(keyword)
+    if keyword != ""
+      Item.where('name LIKE(?)', "%#{keyword}%")
+    else
+      Item.all
+    end
+  end
 end

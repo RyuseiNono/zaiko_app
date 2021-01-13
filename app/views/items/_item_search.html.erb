@@ -1,0 +1,21 @@
+  <tr id = "item-#<%= item_search.id %>">
+    <% if item_search.count == 0 %>
+      <td  class="text-muted", id ="item_name_index-#<%= item_search.id %>"><%= item_search.name %></td>
+      <td  class="text-muted", id ="item_price_index-#<%= item_search.id %>"><%= item_search.price %>円</td>
+      <td  class="text-muted", id ="item_count_index-#<%= item_search.id %>"><%= item_search.count %></td>
+      <td  class="text-muted", id ="item_count_index-#<%= item_search.id %>">
+        <%= link_to shop_path(item_search.shop_id) do %>
+          <%= item_search.shop.name %>
+        <% end %>
+      </td>
+    <% else %>
+      <td id ="item_name_index-#<%= item_search.id %>"><%= item_search.name %></td>
+      <td id ="item_price_index-#<%= item_search.id %>"><%= item_search.price %>円</td>
+      <td id ="item_count_index-#<%= item_search.id %>"><%= item_search.count %></td>
+      <td id ="item_count_index-#<%= item_search.id %>">
+        <%= link_to shop_path(item_search.shop_id) do %>
+          <%= item_search.shop.name %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
