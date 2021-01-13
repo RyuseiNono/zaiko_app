@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
 
   PER = 6
   def index
-    @shops = Shop.order(updated_at: "DESC").page(params[:page]).per(PER)
+    @shops = Shop.order(updated_at: 'DESC').page(params[:page]).per(PER)
     @shop_count = Shop.all.count
   end
 
@@ -39,7 +39,7 @@ class ShopsController < ApplicationController
   end
 
   def my
-    @shops = Shop.where(admin_id: current_admin[:id]).order(updated_at: "DESC").page(params[:page]).per(PER)
+    @shops = Shop.where(admin_id: current_admin[:id]).order(updated_at: 'DESC').page(params[:page]).per(PER)
     @shop_count = Shop.where(admin_id: current_admin[:id]).count
   end
 
@@ -47,12 +47,11 @@ class ShopsController < ApplicationController
 
   def shop_params
     shop_params = params.require(:shop).permit(:name, :prefecture_id, :location, :phone_number, \
-                                               :opening_time, :closing_time, \
-                                               :parking_id, :credit_card_id, :electronic_money_id, :shop_image, :shop_image_cache) \
+                                               :opening_time, :closing_time, :parking_id, \
+                                               :credit_card_id, :electronic_money_id, :shop_image, :shop_image_cache) \
                         .merge(admin_id: current_admin[:id])
     # 全角とハイフンの処理
-    shop_params = Shop.phone_number_converter(shop_params)
-    return shop_params
+    Shop.phone_number_converter(shop_params)
   end
 
   def set_shop

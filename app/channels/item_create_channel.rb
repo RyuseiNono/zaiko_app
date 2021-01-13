@@ -1,6 +1,6 @@
 class ItemCreateChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "item_create_channel"
+    stream_from 'item_create_channel'
   end
 
   def unsubscribed

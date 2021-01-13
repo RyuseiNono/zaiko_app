@@ -2,7 +2,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [840, 630, "Center"]
+  process resize_to_fill: [840, 630, 'Center']
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -13,9 +13,8 @@ class ShopImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-
-  #サムネイルの為に画像をリサイズ
-    # process resize_to_limit: [300, 200, "#ffffff", "Center"]
+  # サムネイルの為に画像をリサイズ
+  # process resize_to_limit: [300, 200, "#ffffff", "Center"]
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

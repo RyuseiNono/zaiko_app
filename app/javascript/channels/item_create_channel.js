@@ -58,7 +58,7 @@ consumer.subscriptions.create("ItemCreateChannel", {
       add_item_price.value = "";
       add_item_count.value = 1;
     }
-    // 　index
+    // index
     if (clone_index != null) {
       // ノード定義
       var new_item = clone_index.cloneNode(true);

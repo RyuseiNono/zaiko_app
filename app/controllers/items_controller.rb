@@ -13,37 +13,34 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      item_id = Item.order(id: "DESC").limit(1).ids[0] #今投稿したitemのid取得
-      items_length = @shop.items.length #データ数０か１以上で場合分けするため
-      ActionCable.server.broadcast 'item_create_channel', content: {item: @item, items_length: items_length}
-    end
+    return unless @item.save
+
+    items_length = @shop.items.length # データ数０か１以上で場合分けするため
+    ActionCable.server.broadcast 'item_create_channel', content: { item: @item, items_length: items_length }
   end
 
   def update
-    if @item.update(item_params)
-      ActionCable.server.broadcast 'item_update_channel', content: {item: @item}
-    end
+    ActionCable.server.broadcast 'item_update_channel', content: { item: @item } if @item.update(item_params)
   end
 
   def destroy
-    if @item.destroy
-      items_length = @shop.items.length #データ数０か１以上で場合分けするため
-      ActionCable.server.broadcast 'item_destroy_channel', content: {item: @item,items_length: items_length}
-    end
+    return unless @item.destroy
+
+    items_length = @shop.items.length # データ数０か１以上で場合分けするため
+    ActionCable.server.broadcast 'item_destroy_channel', content: { item: @item, items_length: items_length }
   end
 
   def search
-    @items = Item.search(params[:keyword]).order(count: "DESC")
+    @items = Item.search(params[:keyword]).order(count: 'DESC')
     @keyword = params[:keyword]
   end
 
   private
+
   def item_params
     item_params = params.require(:item).permit(:name, :count, :price).merge(shop_id: params[:shop_id])
     # 全角の処理
-    item_params = Item.price_converter(item_params)
-    return item_params
+    Item.price_converter(item_params)
   end
 
   def set_shop
