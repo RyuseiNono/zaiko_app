@@ -26,7 +26,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが8桁以上だと登録できない' do
-        @item.price = 123456789
+        @item.price = 123_456_789
         @item.valid?
         expect(@item.errors.full_messages).to include('値段は8文字以内で入力してください')
       end
@@ -66,7 +66,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('店舗を入力してください')
       end
-
     end
   end
 end

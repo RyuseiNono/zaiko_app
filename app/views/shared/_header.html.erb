@@ -1,17 +1,21 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
-    <div class="icon col-md-4">
-      <%= link_to image_tag("zaicocco.png", class:"w-25"), "/" %>
-      <a href="/" class="btn">ZaiCoCCo</a>
-    </div>
-    <div class="input-group col-md-8">
-      <form class="search-form " action="#">
-        <input class='input-box' placeholder='キーワードから探す'>
-        <button class="search-button">
-          <%= image_tag "search.png", class:"search-icon" %>
-        </button>
-      </form>
+    <div class="container">
+      <div class="row">
+        <div class="icon col-md-4">
+          <%= link_to image_tag("zaicocco.png", class:"w-25"), root_path %>
+          <a href="/" class="btn">ZaiCoCCo</a>
+        </div>
+        <div class="input-group col-md-8">
+          <%= form_with url: items_search_path, local: true, method: :get, class: "form-inline w-100" do |f|%>
+            <%= f.text_field :keyword, placeholder: "商品名から探す", class:"form-control w-75" %>
+            <%= button_tag type: 'submit', class: "btn btn-warning text-white" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
   <div class='nav'>
