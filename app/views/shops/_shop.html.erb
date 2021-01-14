@@ -1,14 +1,17 @@
 <div class="col-md-4 h-auto">
   <%= link_to shop_items_path(shop) do %>
-    <div class="card m-1 shadow bg-warning">
+    <div class="card m-1 shadow bg-warning position-relative">
       <% if shop.shop_image? %>
         <%= image_tag shop.shop_image.url, class: 'card-img-top img-fluid' %>
       <% else %>
         <%= image_tag "sample.png", class:"card-img-top" %>
       <% end %>
       <div class="card-body">
-        <p class="card-text font-weight-light text-white text-center shop-name"><%= shop.name %></p>
+        <p class="card-text font-weight-light text-white text-center h4"><%= shop.name %></p>
+      </div>
+      <div id="favorite_button_<%= shop.id %>", class="m-1 position-absolute favorite_mark">
+        <%= render partial: 'shared/favorite', locals: { shop: shop} %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

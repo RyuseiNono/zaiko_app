@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   }
   resources :shops do
     resources :items
+    resources :favorites , only: [:create, :destroy]
     collection do
       get :my
       post :confirm
     end
   end
   get 'items/search'
+  resources :favorites , only: [:index]
 end

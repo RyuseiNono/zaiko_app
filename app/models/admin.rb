@@ -5,6 +5,9 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shops, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_shops, through: :favorites, source: :shop
+
 
   with_options presence: true do
     validates :name

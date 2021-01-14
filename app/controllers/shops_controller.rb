@@ -3,7 +3,6 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:edit, :update, :destroy, :show]
   before_action :user_can_edit?, only: [:edit, :update, :destroy]
 
-  PER = 6
   def index
     @shops = Shop.order(updated_at: 'DESC').page(params[:page]).per(PER)
     @shop_count = Shop.all.count

@@ -3,6 +3,11 @@ class Shop < ApplicationRecord
   # has_one_attached :image
   mount_uploader :shop_image, ShopImageUploader
   has_many :items, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_admins, through: :favorites, source: :admin
+  has_many :favorite_users, through: :favorites, source: :user
+
+
 
   with_options presence: true do
     validates :name,             length: { maximum: 40 }
@@ -32,4 +37,11 @@ class Shop < ApplicationRecord
     shop_params[:phone_number] = shop_params[:phone_number].tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z').gsub(/[-,ー]/, '')
     shop_params
   end
+
+  # ログインしているユーザーがブログをいいねしているがどうか判断するメソッド
+	def favorited_by?(user)
+    # Shop.favoritesが省略されている
+    favorites.where(user_id: user.id).exists? || favorites.where(admin_id: user.id).exists?
+  end
+
 end
