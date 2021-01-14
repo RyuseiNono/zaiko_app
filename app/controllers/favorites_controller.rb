@@ -7,7 +7,6 @@ class FavoritesController < ApplicationController
     elsif admin_signed_in?
       @favorite = Favorite.create(admin_id: current_admin.id, shop_id: @shop.id)
     end
-    redirect_to root_path
   end
 
   def destroy
@@ -18,7 +17,6 @@ class FavoritesController < ApplicationController
       @favorite = Favorite.find_by(admin_id: current_admin.id, shop_id: @shop.id)
       @favorite.destroy
     end
-    redirect_to root_path
   end
 
   private

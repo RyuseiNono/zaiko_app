@@ -1,6 +1,6 @@
 <div class="col-md-4 h-auto">
   <%= link_to shop_items_path(shop) do %>
-    <div class="card m-1 shadow bg-warning">
+    <div class="card m-1 shadow bg-warning position-relative">
       <% if shop.shop_image? %>
         <%= image_tag shop.shop_image.url, class: 'card-img-top img-fluid' %>
       <% else %>
@@ -9,23 +9,9 @@
       <div class="card-body">
         <p class="card-text font-weight-light text-white text-center h4"><%= shop.name %></p>
       </div>
-      <div>
-      <% if admin_signed_in? %>
-        <% if shop.favorited_by?(current_admin) %>
-            <p><span>お気に入り解除: </span><%=link_to shop.favorites.count, shop_favorite_path(shop.id, current_admin.id), method: :delete %></p>
-        <% else %>
-            <p><span>お気に入り登録: </span><%=link_to shop.favorites.count, shop_favorites_path(shop.id), method: :post %></p>
-        <% end %>
-      <% elsif user_signed_in? %>
-        <% if shop.favorited_by?(current_user) %>
-            <p><span>お気に入り解除: </span><%=link_to shop.favorites.count, shop_favorite_path(shop.id, current_user.id), method: :delete %></p>
-        <% else %>
-            <p><span>お気に入り登録: </span><%=link_to shop.favorites.count, shop_favorites_path(shop.id), method: :post %></p>
-        <% end %>
-      <% else %>
-        <p><span>お気に入り数: </span><%= shop.favorites.count %></p>
-      <% end %>
+      <div id="favorite_button_<%= shop.id %>", class="m-1 position-absolute favorite_mark">
+        <%= render partial: 'favorite', locals: { shop: shop} %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

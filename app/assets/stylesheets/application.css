@@ -21,3 +21,8 @@ body {
 a:hover {
   text-decoration: none !important;
 }
+
+.favorite_mark {
+  right: 0px;
+  bottom: 0px;
+}
