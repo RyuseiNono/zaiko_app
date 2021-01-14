@@ -10,7 +10,7 @@
         <p class="card-text font-weight-light text-white text-center h4"><%= shop.name %></p>
       </div>
       <div id="favorite_button_<%= shop.id %>", class="m-1 position-absolute favorite_mark">
-        <%= render partial: 'favorite', locals: { shop: shop} %>
+        <%= render partial: 'shared/favorite', locals: { shop: shop} %>
       </div>
     </div>
   <% end %>

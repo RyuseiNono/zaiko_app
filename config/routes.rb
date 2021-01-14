@@ -19,4 +19,5 @@ Rails.application.routes.draw do
     end
   end
   get 'items/search'
+  resources :favorites , only: [:index]
 end

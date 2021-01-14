@@ -19,5 +19,5 @@
     <% end %>
   <% end %>
 <% else %>
-  <p><%= "お気に入り数:#{shop.favorites.count}" %></p>
+  <div class="text-danger"><i class="fas fa-heart"><%= shop.favorites.count %></i></div>
 <% end %>

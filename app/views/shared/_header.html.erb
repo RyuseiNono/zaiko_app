@@ -1,29 +1,31 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
-<header class='top-page-header'>
-  <div class='search-bar-contents'>
-    <div class="container">
-      <div class="row">
-        <div class="icon col-md-4">
-          <%= link_to image_tag("zaicocco.png", class:"w-25"), root_path %>
-          <a href="/" class="btn">ZaiCoCCo</a>
-        </div>
-        <div class="input-group col-md-8">
-          <%= form_with url: items_search_path, local: true, method: :get, class: "form-inline w-100" do |f|%>
-            <%= f.text_field :keyword, placeholder: "商品名から探す", class:"form-control w-75" %>
-            <%= button_tag type: 'submit', class: "btn btn-warning text-white" do %>
-              <i class="fas fa-search"></i>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+<header class="container">
+
+  <div class="row">
+    <div class="icon col-md-4">
+      <%= link_to image_tag("zaicocco.png", class:"w-25"), root_path %>
+      <a href="/" class="btn">ZaiCoCCo</a>
+    </div>
+    <div class="input-group col-md-8">
+      <%= form_with url: items_search_path, local: true, method: :get, class: "form-inline w-100" do |f|%>
+        <%= f.text_field :keyword, placeholder: "商品名から探す", class:"form-control w-75" %>
+        <%= button_tag type: 'submit', class: "btn btn-warning text-white" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
-  <div class='nav'>
-    <ul class='lists-left'>
-      <li><%= link_to '', "#", class: "category-list" %></li>
-      <li><%= link_to '', "#", class: "brand-list" %></li>
-    </ul>
-    <ul class='lists-right'>
+
+  <div class='nav p-3'>
+    <% if admin_signed_in? %>
+      <ul class='d-flex justify-content-start'>
+        <li><%= link_to new_shop_path, class: "btn btn-primary mr-1" do%>
+        店舗を作成する<i class="fas fa-store mx-1"></i></i><% end %></li>
+        <li><%= link_to favorites_path, class: "btn btn-warning text-white mr-1" do%>
+        お気に入り一覧<i class="fas fa-heart mx-1"></i></i><% end %></li>
+      </ul>
+    <% end %>
+    <ul class='d-flex justify-content-end ml-auto'>
       <% if admin_signed_in?%>
         <li><%= link_to my_shops_path, class: "btn btn-info mr-1" do%>
         <%= current_admin.name %><i class="fas fa-user mx-1"></i><% end %></li>

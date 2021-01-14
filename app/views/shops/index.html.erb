@@ -1,13 +1,5 @@
 <%= render "shared/header"%>
 <div class="container my-3">
-  <div class='nav'>
-    <ul class='lists-left'>
-      <% if admin_signed_in? %>
-        <li><%= link_to new_shop_path, class: "btn btn-primary mr-1" do%>
-        店舗を作成する<i class="fas fa-store mx-1"></i></i><% end %></li>
-      <% end %>
-    </ul>
-  </div>
   <div class="font-weight-bold h2"><%= "店舗一覧 全#{@shop_count}店" %></div>
   <div class="row">
     <%= render partial: "shop" ,collection:  @shops%>
