@@ -7,7 +7,24 @@
         <%= image_tag "sample.png", class:"card-img-top" %>
       <% end %>
       <div class="card-body">
-        <p class="card-text font-weight-light text-white text-center shop-name"><%= shop.name %></p>
+        <p class="card-text font-weight-light text-white text-center h4"><%= shop.name %></p>
+      </div>
+      <div>
+      <% if admin_signed_in? %>
+        <% if shop.favorited_by?(current_admin) %>
+            <p><span>お気に入り解除: </span><%=link_to shop.favorites.count, shop_favorite_path(shop.id, current_admin.id), method: :delete %></p>
+        <% else %>
+            <p><span>お気に入り登録: </span><%=link_to shop.favorites.count, shop_favorites_path(shop.id), method: :post %></p>
+        <% end %>
+      <% elsif user_signed_in? %>
+        <% if shop.favorited_by?(current_user) %>
+            <p><span>お気に入り解除: </span><%=link_to shop.favorites.count, shop_favorite_path(shop.id, current_user.id), method: :delete %></p>
+        <% else %>
+            <p><span>お気に入り登録: </span><%=link_to shop.favorites.count, shop_favorites_path(shop.id), method: :post %></p>
+        <% end %>
+      <% else %>
+        <p><span>お気に入り数: </span><%= shop.favorites.count %></p>
+      <% end %>
       </div>
     </div>
   </div>
