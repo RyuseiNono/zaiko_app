@@ -32,10 +32,10 @@
         <li><%= link_to  destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" do%>
         ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
       <% else %>
-        <li><%= link_to  new_admin_session_path, class: "btn btn-primary mr-1" do%>
+        <li><%= link_to  entrances_sessions_path, class: "btn btn-primary mr-1" do%>
           ログイン<i class="fas fa-sign-in-alt mx-1"></i>
         <% end %></li>
-        <li><%= link_to  new_admin_registration_path, class: "btn btn-outline-primary" do%>
+        <li><%= link_to  entrances_registrations_path, class: "btn btn-outline-primary" do%>
           新規登録<i class="fas fa-user-plus mx-1"></i>
         <% end %></li>
       <% end %>

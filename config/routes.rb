@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/sessions#new_guest'
+  end
+
   resources :shops do
     resources :items
     resources :favorites , only: [:create, :destroy]
@@ -18,6 +22,9 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  get 'items/search'
+
   resources :favorites , only: [:index]
+  get 'items/search'
+  get 'entrances/registrations'
+  get 'entrances/sessions'
 end
