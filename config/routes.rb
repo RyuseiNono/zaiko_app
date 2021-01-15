@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   devise_scope :admin do
-    post 'admin/guest_sign_in', to: 'admin/sessions#new_guest'
+    post 'admins/guest_sign_in', to: 'admins/sessions#new_guest'
   end
 
   resources :shops do

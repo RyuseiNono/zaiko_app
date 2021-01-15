@@ -42,6 +42,9 @@
         <li><%= link_to  destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" do%>
         ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
       <% else %>
+        <li><%= link_to  admins_guest_sign_in_path, method: :post, class: "btn btn-success mr-1" do%>
+          簡単ログイン<i class="fas fa-star mx-1"></i>
+        <% end %></li>
         <li><%= link_to  entrances_sessions_path, class: "btn btn-primary mr-1" do%>
           ログイン<i class="fas fa-sign-in-alt mx-1"></i>
         <% end %></li>
