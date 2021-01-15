@@ -6,9 +6,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def check_guest
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザの変更・削除できません'
-    end
+    redirect_to root_path, alert: 'ゲストユーザの変更・削除できません' if resource.email == 'guest@example.com'
   end
   # GET /resource/sign_up
   # def new
@@ -58,7 +56,6 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
-
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

@@ -7,8 +7,6 @@ class Shop < ApplicationRecord
   has_many :favorite_admins, through: :favorites, source: :admin
   has_many :favorite_users, through: :favorites, source: :user
 
-
-
   with_options presence: true do
     validates :name,             length: { maximum: 40 }
     validates :location,         length: { maximum: 1000 }
@@ -39,9 +37,8 @@ class Shop < ApplicationRecord
   end
 
   # ログインしているユーザーがブログをいいねしているがどうか判断するメソッド
-	def favorited_by?(user)
+  def favorited_by?(user)
     # Shop.favoritesが省略されている
     favorites.where(user_id: user.id).exists? || favorites.where(admin_id: user.id).exists?
   end
-
 end

@@ -20,13 +20,8 @@ class Admin < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(name: 'amano', email: 'z@z') do |admin|
+    find_or_create_by!(name: 'GUEST', email: 'guest@example.com') do |admin|
       admin.password = SecureRandom.hex(10)
     end
   end
-  # def self.guest
-  #   find_or_create_by!(name: 'GUEST', email: 'guest@example.com') do |admin|
-  #     admin.password = SecureRandom.hex(10)
-  #   end
-  # end
 end
