@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     return unless @item.save
 
-    items_length = @shop.items.length # データ数０か１以上で場合分けするため
-    ActionCable.server.broadcast 'item_create_channel', content: { item: @item, items_length: items_length }
+    # items_length = @shop.items.length # データ数０か１以上で場合分けするため
+    # ActionCable.server.broadcast 'item_create_channel', content: { item: @item, items_length: items_length }
   end
 
   def update
