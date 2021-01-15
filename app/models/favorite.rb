@@ -5,6 +5,4 @@ class Favorite < ApplicationRecord
 
   validates_uniqueness_of :shop_id, scope: :user_id, if: :user_id
   validates_uniqueness_of :shop_id, scope: :admin_id, if: :admin_id
-
-
 end

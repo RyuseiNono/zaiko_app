@@ -24,6 +24,11 @@
         <li><%= link_to favorites_path, class: "btn btn-warning text-white mr-1" do%>
         お気に入り一覧<i class="fas fa-heart mx-1"></i></i><% end %></li>
       </ul>
+    <% elsif user_signed_in? %>
+      <ul class='d-flex justify-content-start'>
+        <li><%= link_to favorites_path, class: "btn btn-warning text-white mr-1" do%>
+        お気に入り一覧<i class="fas fa-heart mx-1"></i></i><% end %></li>
+      </ul>
     <% end %>
     <ul class='d-flex justify-content-end ml-auto'>
       <% if admin_signed_in?%>
@@ -31,11 +36,19 @@
         <%= current_admin.name %><i class="fas fa-user mx-1"></i><% end %></li>
         <li><%= link_to  destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" do%>
         ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
+      <% elsif user_signed_in? %>
+        <li><%= link_to entrances_user_chanege_desroy_path, class: "btn btn-info mr-1" do%>
+        <%= current_user.name %><i class="fas fa-user mx-1"></i><% end %></li>
+        <li><%= link_to  destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" do%>
+        ログアウト<i class="fas fa-sign-out-alt mx-1"></i><% end %></li>
       <% else %>
-        <li><%= link_to  new_admin_session_path, class: "btn btn-primary mr-1" do%>
+        <li><%= link_to  admins_guest_sign_in_path, method: :post, class: "btn btn-success mr-1" do%>
+          簡単ログイン<i class="fas fa-star mx-1"></i>
+        <% end %></li>
+        <li><%= link_to  entrances_sessions_path, class: "btn btn-primary mr-1" do%>
           ログイン<i class="fas fa-sign-in-alt mx-1"></i>
         <% end %></li>
-        <li><%= link_to  new_admin_registration_path, class: "btn btn-outline-primary" do%>
+        <li><%= link_to  entrances_registrations_path, class: "btn btn-outline-primary" do%>
           新規登録<i class="fas fa-user-plus mx-1"></i>
         <% end %></li>
       <% end %>

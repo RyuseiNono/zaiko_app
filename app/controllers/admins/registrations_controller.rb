@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
+  before_action :check_guest, only: [:destroy, :update]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def check_guest
+    redirect_to root_path, alert: 'ゲストユーザの変更・削除できません' if resource.email == 'guest@example.com'
+  end
   # GET /resource/sign_up
   # def new
   #   super
@@ -38,8 +42,11 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
