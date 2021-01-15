@@ -1,10 +1,15 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_user_admin!
   before_action :set_shop, only: [:create, :destroy]
 
   def index
-    @shops = current_admin.favorite_shops.page(params[:page]).per(PER)
-    @shop_count = current_admin.favorite_shops.count
+    if user_signed_in?
+      @shops = current_user.favorite_shops.page(params[:page]).per(PER)
+      @shop_count = current_user.favorite_shops.count
+    elsif admin_signed_in?
+      @shops = current_admin.favorite_shops.page(params[:page]).per(PER)
+      @shop_count = current_admin.favorite_shops.count
+    end
   end
 
   def create
@@ -29,5 +34,4 @@ class FavoritesController < ApplicationController
   def set_shop
     @shop = Shop.find(params[:shop_id])
   end
-
 end

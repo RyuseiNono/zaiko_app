@@ -4,4 +4,7 @@ class EntrancesController < ApplicationController
 
   def sessions
   end
+
+  def user_chanege_desroy
+  end
 end

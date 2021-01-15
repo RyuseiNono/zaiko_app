@@ -1,6 +1,12 @@
 <%= render "shared/header"%>
 <div class="container my-3">
-  <div class="font-weight-bold h2"><%= "#{current_admin.name}さんのお気に入り店舗一覧 全#{@shop_count}店" %></div>
+  <div class="font-weight-bold h2">
+  <% if user_signed_in? %>
+    <%= "#{current_user.name}さんのお気に入り店舗一覧 全#{@shop_count}店" %>
+  <% elsif admin_signed_in? %>
+    <%= "#{current_admin.name}さんのお気に入り店舗一覧 全#{@shop_count}店" %>
+  <% end %>
+  </div>
   <div class="row">
     <%= render partial: "shops/shop" ,collection:  @shops%>
   </div>

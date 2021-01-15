@@ -10,7 +10,7 @@
   <% end %>
 <% elsif user_signed_in? %>
   <% if shop.favorited_by?(current_user) %>
-    <%=link_to  shop_favorite_path(shop.id, current_admin.id), class: "text-danger", method: :delete, remote: true do %>
+    <%=link_to  shop_favorite_path(shop.id, current_user.id), class: "text-danger", method: :delete, remote: true do %>
       <i class="fas fa-heart"><%= shop.favorites.count %></i>
     <% end %>
   <% else %>

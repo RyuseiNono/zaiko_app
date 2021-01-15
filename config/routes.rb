@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   get 'items/search'
   get 'entrances/registrations'
   get 'entrances/sessions'
+  get 'entrances/user_chanege_desroy'
 end
