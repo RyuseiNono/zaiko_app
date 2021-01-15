@@ -1,11 +1,11 @@
 <%= render "shared/header"%>
 <div class="container my-3">
   <div class="font-weight-bold h1 m-3 text-center">ログイン</div>
-  <div class="h2 m-3 text-center">ログインのするアカウントの種類を選んでください！</div>
+  <div class="h2 m-3 text-center">ログインのするアカウントの種類を選んでください</div>
   <div class="row justify-content-around p-5 mb-5">
     <div class="col-md-4 h-auto alert alert-primary h1 text-center py-5 px-0 btn">
       <%= link_to  new_user_session_path, class:"text-reset" do%>
-        <div class="h1">一般ユーザー</div>
+        <div class="h1">一般ユーザー<i class="fas fa-user h3 mx-2"></i></div>
       <% end %>
     </div>
     <div class="col-md-3 h-auto alert alert-warning h1 text-center py-5 px-0 btn">
@@ -13,9 +13,9 @@
         <div class="h1">簡単ログイン</div>
       <% end %>
     </div>
-    <div class="col-md-4 h-auto alert alert-secondary h1 text-center py-5 px-0 btn">
+    <div class="col-md-4 h-auto alert alert-dark h1 text-center py-5 px-0 btn">
       <%= link_to  new_admin_session_path, class:"text-reset" do%>
-        <div class="h1">店舗ユーザー</div>
+        <div class="h1">店舗ユーザー<i class="fas fa-store h3 mx-2"></i></div>
       <% end %>
     </div>
   </div>

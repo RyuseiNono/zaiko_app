@@ -1,54 +1,18 @@
 <%= render "shared/second-header"%>
 
 <%= form_with model: @admin, url: admin_registration_path, class: 'registration-main', local: true do |f| %>
-<div class='form-wrap'>
+<div class='form-wrap alert-dark'>
   <div class='form-header'>
-    <h1 class='form-header-text'>
-      ショップ会員情報入力
-    </h1>
-  </div>
-
-  <%= render 'shared/error_messages', model: f.object %>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">アカウント名<i class="fas fa-user mx-1"></i>
-      <span class="badge badge-danger">必須</span></label>
+    <div class='font-wight-bold h1 py-5'>
+      店舗ユーザー情報入力
     </div>
-    <%= f.text_field :name, class:"input-default", id:"name", placeholder:"例) 八百屋", maxlength:"40", autofocus: true%>
   </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス<i class="far fa-envelope mx-1"></i>
-      <span class="badge badge-danger">必須</span></label>
-    </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可" %>
+  <%= render partial: "shared/registration_form" ,locals: { f: f } %>
+  <div class='register-btn mt-4'>
+    <%= button_tag type: 'submit', class: "btn btn-block btn-outline-dark" do %>
+      会員登録<i class="fas fa-user-plus mx-1 mx-1"></i>
+    <% end %>
   </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード<i class="fas fa-key mx-1"></i>
-      <span class="badge badge-danger">必須</span></label>
-    </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード(確認)<i class="fas fa-key mx-1"></i>
-      <span class="badge badge-danger">必須</span></label>
-    </div>
-    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
-  </div>
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
-  <div class='register-btn'>
-    <%= f.submit "会員登録" ,class:"btn btn-block  btn-outline-primary" %>
-  </div>
-  <p class='register-info'>本人情報の登録について</p>
 </div>
 <% end %>
 

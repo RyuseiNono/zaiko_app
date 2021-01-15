@@ -1,17 +1,17 @@
 <%= render "shared/header"%>
 <div class="container my-3">
   <div class="font-weight-bold h1 m-3 text-center">新規登録</div>
-  <div class="h2 m-3 text-center">登録するアカウントの種類を選んでください！</div>
+  <div class="h2 m-3 text-center">登録するアカウントの種類を選んでください</div>
   <div class="row justify-content-around p-5 mb-5">
     <div class="col-md-4 h-auto alert alert-primary text-center py-5 btn">
       <%= link_to  new_user_registration_path, class:"text-reset" do%>
-        <div class="h1">見るだけ！</div>
+        <div class="h1">見るだけ<i class="fas fa-user h3 mx-2"></i></div>
         <div class="h5">一般ユーザー登録</div>
       <% end %>
     </div>
-    <div class="col-md-4 h-auto alert alert-secondary text-center py-5 btn">
+    <div class="col-md-4 h-auto alert alert-dark text-center py-5 btn">
       <%= link_to  new_admin_registration_path, class:"text-reset" do%>
-        <div class="h1 ">出店する！</div>
+        <div class="h1 ">出店する<i class="fas fa-store h3 mx-2"></i></div>
         <div class="h5">店舗ユーザー登録</div>
       <% end %>
     </div>
