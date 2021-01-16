@@ -12,20 +12,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # binding.pry
   end
 
   def create
     @item = Item.new(item_params)
     return unless @item.save
-    # binding.pry
 
     # items_length = @shop.items.length # データ数０か１以上で場合分けするため
     # ActionCable.server.broadcast 'item_create_channel', content: { item: @item, items_length: items_length }
   end
 
   def update
-    # binding.pry
     return unless @item.update(item_params)
     # ActionCable.server.broadcast 'item_update_channel', content: { item: @item } if @item.update(item_params)
   end
@@ -33,8 +30,8 @@ class ItemsController < ApplicationController
   def destroy
     return unless @item.destroy
 
-    items_length = @shop.items.length # データ数０か１以上で場合分けするため
-    ActionCable.server.broadcast 'item_destroy_channel', content: { item: @item, items_length: items_length }
+    # items_length = @shop.items.length # データ数０か１以上で場合分けするため
+    # ActionCable.server.broadcast 'item_destroy_channel', content: { item: @item, items_length: items_length }
   end
 
   def search

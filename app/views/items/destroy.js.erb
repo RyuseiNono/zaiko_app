@@ -1,0 +1,7 @@
+$('#item-<%= @item.id %>').remove();
+
+// 在庫が1つもない時にテーブルを隠す
+<% if @shop.items.count == 0 %>
+  $('#items_empty').show();
+  $('#items_table').hide();
+<% end %>
