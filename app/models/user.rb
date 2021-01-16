@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_shops, through: :favorites, source: :shop
+  has_many :messages
 
   with_options presence: true, on: :create do
     validates :name

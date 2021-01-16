@@ -19,13 +19,6 @@
         </thead>
         <tbody id="items">
           <%= render partial: "item_search" ,collection:  @items%>
-            <%# -----追加時クローン用------ %>
-          <tr hidden id = "item-#clone_index">
-              <td id ="item_name_index-#clone"></td>
-              <td id ="item_price_index-#clone"></td>
-              <td id ="item_count_index-#clone"></td>
-          </tr>
-            <%# -----追加時クローン用------ %>
         </tbody>
       </table>
   </div>

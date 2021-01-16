@@ -6,6 +6,7 @@ class Shop < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_admins, through: :favorites, source: :admin
   has_many :favorite_users, through: :favorites, source: :user
+  has_many :messages, dependent: :destroy
 
   with_options presence: true do
     validates :name,             length: { maximum: 40 }

@@ -1,0 +1,11 @@
+<div id = "message-<%= message.id %>">
+  <p>
+    <% if message.user.present? %>
+      <%= message.user.name %>
+    <% elsif message.admin.present? %>
+      <%= message.admin.name %>
+    <% end %>
+    :
+    <%= message.text %>
+  </p>
+</div>

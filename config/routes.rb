@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :my
       post :confirm
     end
+    resources :messages ,only: [:create, :destroy]
   end
 
   resources :favorites , only: [:index]
