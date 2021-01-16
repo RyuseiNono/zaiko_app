@@ -80,3 +80,4 @@ gem "faker-japanese"
 gem 'gimei'
 gem 'kaminari'
 gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
