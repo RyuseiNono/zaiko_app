@@ -11,7 +11,7 @@
           <div>
             <p class="alert alert-secondary mb-0">
               <% if @shop.shop_image? %>
-                <%= @shop.shop_image.file.original_filename %>
+                <%= @shop.shop_image.file.filename %>
               <% else %>
                 画像は選択されていません
               <% end %>
