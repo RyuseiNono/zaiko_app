@@ -80,8 +80,8 @@
     <p class="font-weight-bold h4 mt-4">メッセージ(最新10件)</p>
     <div class="alert alert-warning">
       <%= form_with model: [@shop, @message], class:'d-flex justify-content-around my-3' do |f| %>
-        <%= f.text_field :text, class:"form-inline form-control", placeholder:"コメントを入力してください", id: "message-form" %>
-        <%= f.submit 'コメントする', class:"form-inline btn btn-warning text-white" %>
+        <%= f.text_field :text, class:"form-inline form-control", placeholder:"メッセージを入力してください", id: "message-form" %>
+        <%= f.submit '送信する', class:"form-inline btn btn-warning text-white" %>
       <% end %>
       <% if @shop.messages.present? %>
         <div style="display: none;" id="messages_empty">メッセージはありません。</div>
@@ -95,8 +95,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 <%= render "shared/second-footer"%>
