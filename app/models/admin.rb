@@ -9,7 +9,6 @@ class Admin < ApplicationRecord
   has_many :favorite_shops, through: :favorites, source: :shop
   has_many :messages
 
-
   with_options presence: true, on: :create do
     validates :name
     with_options format: { with: /\A[a-z0-9]+\z/i } do
