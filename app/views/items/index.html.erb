@@ -21,7 +21,7 @@
       <%= image_tag "/yaoya.png", class:"card-img-top" %>
     <% end %>
 
-    <p class="font-weight-bold h4 my-3">店舗情報</p>
+    <p class="font-weight-bold h4 mt-4">店舗情報</p>
     <table class="table table-sm table-striped table-bordered">
       <tbody>
         <tr>
@@ -58,32 +58,45 @@
         </tr>
       </tbody>
     </table>
-    <p class="font-weight-bold h4 my-3"><br>在庫情報</p>
+    <p class="font-weight-bold h4 mt-4">在庫情報</p>
     <% if @shop.items.present? %>
-      <div hidden id="items_empty">商品はありません。</div>
+      <div style="display: none;", id="items_empty">商品はありません。</div>
       <table class="table table-hover", id="items_table">
     <% else %>
       <div id="items_empty">商品はありません。</div>
-      <table hidden class="table table-hover", id="items_table">
+      <table style="display: none;", class="table table-hover", id="items_table">
     <% end %>
-        <thead>
-          <tr>
-            <th scope="col">商品名</th>
-            <th scope="col">値段</th>
-            <th scope="col">在庫数</th>
-          </tr>
-        </thead>
-        <tbody id="items">
-          <%= render partial: "item_index" ,collection:  @shop.items%>
-            <%# -----追加時クローン用------ %>
-          <tr hidden id = "item-#clone_index">
-              <td id ="item_name_index-#clone"></td>
-              <td id ="item_price_index-#clone"></td>
-              <td id ="item_count_index-#clone"></td>
-          </tr>
-            <%# -----追加時クローン用------ %>
-        </tbody>
-      </table>
+      <thead>
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">値段</th>
+          <th scope="col">在庫数</th>
+        </tr>
+      </thead>
+      <tbody id="items">
+        <%= render partial: "item_index" ,collection:  @shop.items%>
+      </tbody>
+    </table>
+    <p class="font-weight-bold h4 mt-4">メッセージ(最新10件)</p>
+    <div class="alert alert-warning">
+      <%= form_with model: [@shop, @message], class:'d-flex justify-content-around my-3' do |f| %>
+        <%= f.text_field :text, class:"form-inline form-control", placeholder:"コメントを入力してください", id: "message-form" %>
+        <%= f.submit 'コメントする', class:"form-inline btn btn-warning text-white" %>
+      <% end %>
+      <% if @shop.messages.present? %>
+        <div style="display: none;" id="messages_empty">メッセージはありません。</div>
+        <div class="table table-sm table-striped", id="messages_table">
+      <% else %>
+        <div id="messages_empty">メッセージはありません。</div>
+        <div style="display: none;", class="table table-sm table-striped", id="messages_table">
+      <% end %>
+        <div id="messages">
+          <%= render partial: "shared/message" ,collection: @shop.messages.order(updated_at: "DESC").limit(10)%>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
 <%= render "shared/second-footer"%>

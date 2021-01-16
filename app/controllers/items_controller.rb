@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   before_action :user_can_edit?, only: [:new, :update, :create, :destroy]
 
   def index
+    @message = Message.new
   end
 
   def new

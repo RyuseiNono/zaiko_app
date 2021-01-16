@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_190742) do
+ActiveRecord::Schema.define(version: 2021_01_16_103718) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 2021_01_13_190742) do
     t.index ["shop_id"], name: "index_items_on_shop_id"
   end
 
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "admin_id"
+    t.bigint "user_id"
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_messages_on_admin_id"
+    t.index ["shop_id"], name: "index_messages_on_shop_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "prefecture_id", null: false
@@ -102,5 +114,8 @@ ActiveRecord::Schema.define(version: 2021_01_13_190742) do
   add_foreign_key "favorites", "shops"
   add_foreign_key "favorites", "users"
   add_foreign_key "items", "shops"
+  add_foreign_key "messages", "admins"
+  add_foreign_key "messages", "shops"
+  add_foreign_key "messages", "users"
   add_foreign_key "shops", "admins"
 end

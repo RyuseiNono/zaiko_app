@@ -17,5 +17,6 @@ module ZaikoApp
     # the framework and any gems in your application.
     # 日本語の言語設定
   config.i18n.default_locale = :ja
+  config.time_zone = 'Tokyo'
   end
 end
