@@ -17,21 +17,14 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     return unless @item.save
-
-    # items_length = @shop.items.length # データ数０か１以上で場合分けするため
-    # ActionCable.server.broadcast 'item_create_channel', content: { item: @item, items_length: items_length }
   end
 
   def update
     return unless @item.update(item_params)
-    # ActionCable.server.broadcast 'item_update_channel', content: { item: @item } if @item.update(item_params)
   end
 
   def destroy
     return unless @item.destroy
-
-    # items_length = @shop.items.length # データ数０か１以上で場合分けするため
-    # ActionCable.server.broadcast 'item_destroy_channel', content: { item: @item, items_length: items_length }
   end
 
   def search
