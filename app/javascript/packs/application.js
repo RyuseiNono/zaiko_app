@@ -6,8 +6,7 @@
 require("@rails/ujs").start();
 // require("turbolinks").start()
 require("@rails/activestorage").start();
-require("channels");
-// require("update_button");
+// require("channels");
 require("preview");
 require("jquery");
 

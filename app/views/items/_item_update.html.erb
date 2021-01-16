@@ -1,0 +1,21 @@
+<%= form_with model: [item_new.shop, item_new], id:"form-#{item_new.id}", method: :patch do |f| %>
+  <td>
+      <%= f.text_field :name, size: 8, form:"form-#{item_new.id}", id:"item_name_update-##{item_new.id}", class:"form-control" %>
+  </td>
+  <td>
+      <%= f.text_field :price, form:"form-#{item_new.id}", id:"item_price_update-##{item_new.id}", size: 6, maxlength:8, class:"form-control" %>
+  </td>
+  <td>
+      <%= f.number_field :count, min: 0, max: 99, size:4, form:"form-#{item_new.id}", id:"item_count_update-##{item_new.id}", class:"form-control" %>
+  </td>
+  <td class="w-25">
+    <%= button_tag type: 'submit', class: "btn btn-success", form:"form-#{item_new.id}", id:"item_update_btn-##{item_new.id}" do %>
+      編集を保存する<i class="fas fa-sync mx-1"></i>
+    <% end %>
+  </td>
+  <td class="w-25">
+    <%= link_to  shop_item_path(item_new.shop,item_new), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger",remote: true do%>
+      在庫を削除する<i class="far fa-trash-alt mx-1"></i>
+    <% end %>
+  </td>
+<% end %>
