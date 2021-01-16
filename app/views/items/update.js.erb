@@ -1,0 +1,4 @@
+$('#item_name_new-#<%= @item.id %>').val("<%= @item.name %>");
+$('#item_price_new-#<%= @item.id %>').val("<%= @item.price %>");
+$('#item_count_new-#<%= @item.id %>').val("<%= @item.count %>");
+$('#item-<%= @item.id %>').html("<%= j(render partial: 'items/item_edit', locals: {item_new: @item}) %>");

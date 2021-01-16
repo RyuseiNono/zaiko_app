@@ -1,1 +1,9 @@
 $('#items').append("<%= j(render partial: 'items/item_new', locals: {item_new: @item}) %>");
+$('#add_item_name').val("");
+$('#add_item_price').val("");
+$('#add_item_count').val("1");
+
+<% if @item.count != 0 %>
+  $('#items_empty').hide();
+  $('#items_table').show();
+<% end %>
