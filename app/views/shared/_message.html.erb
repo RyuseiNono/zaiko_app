@@ -1,11 +1,14 @@
 <div id = "message-<%= message.id %>">
   <p>
-    <% if message.user.present? %>
-      <%= message.user.name %>
-    <% elsif message.admin.present? %>
-      <%= message.admin.name %>
-    <% end %>
-    :
+    <strong>
+      <%= message.updated_at.strftime("%m/%d %H:%M ") %>
+      <% if message.user.present? %>
+        <%= message.user.name %>
+      <% elsif message.admin.present? %>
+        <%= message.admin.name %>
+      <% end %>
+      :
+    </strong>
     <%= message.text %>
   </p>
 </div>

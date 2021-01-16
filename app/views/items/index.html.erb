@@ -77,10 +77,10 @@
         <%= render partial: "item_index" ,collection:  @shop.items%>
       </tbody>
     </table>
-    <p class="font-weight-bold h4 mt-4">メッセージ一覧</p>
+    <p class="font-weight-bold h4 mt-4">メッセージ(最新10件)</p>
     <div class="alert alert-warning">
       <%= form_with model: [@shop, @message], class:'d-flex justify-content-around my-3' do |f| %>
-        <%= f.text_field :text, class:"form-inline form-control", placeholder:"コメントを入力してください" %>
+        <%= f.text_field :text, class:"form-inline form-control", placeholder:"コメントを入力してください", id: "message-form" %>
         <%= f.submit 'コメントする', class:"form-inline btn btn-warning text-white" %>
       <% end %>
       <% if @shop.messages.present? %>
@@ -91,7 +91,7 @@
         <div style="display: none;", class="table table-sm table-striped", id="messages_table">
       <% end %>
         <div id="messages">
-          <%= render partial: "shared/message" ,collection: @shop.messages.order(updated_at: "DESC")%>
+          <%= render partial: "shared/message" ,collection: @shop.messages.order(updated_at: "DESC").limit(10)%>
         </div>
       </div>
     </div>

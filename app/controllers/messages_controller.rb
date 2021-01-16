@@ -2,6 +2,11 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     retuen unless @message.save
+    if user_signed_in?
+      ActionCable.server.broadcast('message_channel', message: @message, message_user_name: @message.user.name, time: @message.updated_at.strftime("%m/%d %H:%M "), message_count: @message.shop.messages.count)
+    elsif admin_signed_in?
+      ActionCable.server.broadcast('message_channel', message: @message, message_user_name: @message.admin.name, time: @message.updated_at.strftime("%m/%d %H:%M "), message_count: @message.shop.messages.count)
+    end
   end
 
   def destroy
