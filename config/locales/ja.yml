@@ -26,3 +26,6 @@ ja:
         price: 値段
         count: 在庫数
         shop: 店舗
+      message:
+        text: メッセージ
+        shop: 店舗

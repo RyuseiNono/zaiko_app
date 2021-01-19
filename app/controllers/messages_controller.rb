@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user_admin!
+
   def create
     @message = Message.new(message_params)
     retuen unless @message.save

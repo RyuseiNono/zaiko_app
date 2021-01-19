@@ -79,21 +79,25 @@
     </table>
     <p class="font-weight-bold h4 mt-4">メッセージ(最新10件)</p>
     <div class="alert alert-warning">
-      <%= form_with model: [@shop, @message], class:'d-flex justify-content-around my-3' do |f| %>
-        <%= f.text_field :text, class:"form-inline form-control", placeholder:"メッセージを入力してください", id: "message-form" %>
-        <%= f.submit '送信する', class:"form-inline btn btn-warning text-white" %>
-      <% end %>
-      <% if @shop.messages.present? %>
-        <div style="display: none;" id="messages_empty">メッセージはありません。</div>
-        <div class="table table-sm table-striped", id="messages_table">
-      <% else %>
-        <div id="messages_empty">メッセージはありません。</div>
-        <div style="display: none;", class="table table-sm table-striped", id="messages_table">
-      <% end %>
-        <div id="messages">
-          <%= render partial: "shared/message" ,collection: @shop.messages.order(updated_at: "DESC").limit(10)%>
+      <% if user_signed_in? || admin_signed_in? %>
+        <%= form_with model: [@shop, @message], class:'d-flex justify-content-around my-3' do |f| %>
+          <%= f.text_field :text, class:"form-inline form-control", placeholder:"メッセージを入力してください", id: "message-form" %>
+          <%= f.submit '送信する', class:"form-inline btn btn-warning text-white" %>
+        <% end %>
+        <% if @shop.messages.present? %>
+          <div style="display: none;" id="messages_empty">メッセージはありません。</div>
+          <div class="table table-sm table-striped", id="messages_table">
+        <% else %>
+          <div id="messages_empty">メッセージはありません。</div>
+          <div style="display: none;", class="table table-sm table-striped", id="messages_table">
+        <% end %>
+          <div id="messages">
+            <%= render partial: "shared/message" ,collection: @shop.messages.order(updated_at: "DESC").limit(10)%>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div class="text-center">メッセージ機能はログイン後にご利用いただけます。</div>
+      <% end %>
     </div>
   </div>
 </div>
