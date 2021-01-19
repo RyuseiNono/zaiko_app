@@ -1,19 +1,23 @@
-<%= render "shared/second-header"%>
+<%= render "shared/header"%>
 
-<%= form_with model: @admin, url: admin_registration_path, class: 'registration-main', local: true do |f| %>
-<div class='form-wrap alert-dark'>
-  <div class='form-header'>
-    <div class='font-wight-bold h1 py-5'>
-      店舗ユーザー情報入力
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= form_with model: @admin, url: admin_registration_path, local: true do |f| %>
+      <div class='py-5 mb-3 alert-dark'>
+        <div class='font-wight-bold h1 text-center'>
+          店舗ユーザー<br class='d-block d-sm-none'>情報入力
+        </div>
+        <%= render partial: "shared/registration_form" ,locals: { f: f } %>
+        <div class='register-btn mt-4'>
+          <%= button_tag type: 'submit', class: "btn btn-block btn-outline-dark" do %>
+            会員登録<i class="fas fa-user-plus mx-1 mx-1"></i>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
-  <%= render partial: "shared/registration_form" ,locals: { f: f } %>
-  <div class='register-btn mt-4'>
-    <%= button_tag type: 'submit', class: "btn btn-block btn-outline-dark" do %>
-      会員登録<i class="fas fa-user-plus mx-1 mx-1"></i>
-    <% end %>
-  </div>
 </div>
-<% end %>
 
 <%= render "shared/second-footer"%>
