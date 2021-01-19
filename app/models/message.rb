@@ -5,8 +5,5 @@ class Message < ApplicationRecord
 
   with_options presence: true do
     validates :text
-    validates :shop_id
   end
-  validates :user_id, presence: true, unless: :admin_id?
-  validates :admin_id, presence: true, unless: :user_id?
 end
