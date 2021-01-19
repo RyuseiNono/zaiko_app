@@ -1,14 +1,18 @@
-<%= render "shared/second-header"%>
+<%= render "shared/header"%>
 
-<%= form_with model: @admin, url: admin_session_path, class: 'registration-main', local: true do |f| %>
-<div class='form-wrap alert-dark'>
-  <div class='form-header'>
-    <div class='font-wight-bold h1 py-5'>
-      店舗ユーザーログイン
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
+      <div class='py-5 mb-3 alert-dark'>
+        <div class='font-wight-bold h1 text-center'>
+          店舗ユーザー<br class='d-block d-sm-none'>ログイン
+        </div>
+        <%= render partial: "shared/session_form" ,locals: { f: f } %>
+      </div>
+      <% end %>
     </div>
   </div>
-  <%= render partial: "shared/session_form" ,locals: { f: f } %>
 </div>
-<% end %>
 
 <%= render "shared/second-footer"%>

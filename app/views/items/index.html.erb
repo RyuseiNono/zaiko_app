@@ -1,16 +1,16 @@
 <%= render "shared/header"%>
 <div class="container my-3">
   <div class="nav">
-    <ul class="lists-left">
+    <ul class="lists-left row">
     <% if admin_signed_in? && @shop.admin.id == current_admin.id %>
-      <li><%= link_to  edit_shop_path(@shop), class: "btn btn-success m-3" do%>
+      <li><%= link_to  edit_shop_path(@shop), class: "btn btn-success mx-3 my-1" do%>
       店舗情報を編集する<i class="fa fa-edit mx-1"></i><% end %></li>
-      <li><%= link_to  new_shop_item_path(@shop), class: "btn btn-success m-3" do%>
+      <li><%= link_to  new_shop_item_path(@shop), class: "btn btn-success mx-3 my-1" do%>
       在庫を編集する<i class="fas fa-boxes mx-1"></i><% end %></li>
-      <li><%= link_to  shop_path(@shop), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger m-3" do%>
+      <li><%= link_to  shop_path(@shop), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger mx-3 my-1" do%>
       店舗を削除する<i class="far fa-trash-alt mx-1"></i><% end %></li>
     <% end %>
-    <li><%= link_to  shops_path, class: "btn btn-secondary m-3" do%>
+    <li><%= link_to  shops_path, class: "btn btn-secondary mx-3 my-1" do%>
     店舗一覧に戻る<i class="fas fa-angle-double-left mx-1"></i><% end %></li>
     </ul>
   </div>
@@ -26,35 +26,35 @@
       <tbody>
         <tr>
           <th>店舗名<i class="fas fa-store mx-1"></i></th>
-          <td class="w-75"><%= @shop.name %></td>
+          <td class="w-50"><%= @shop.name %></td>
         </tr>
         <tr>
           <th>住所<i class="fas fa-map-marker-alt mx-1"></i></th>
-          <td class="w-75"><%= @shop.location %></td>
+          <td class="w-50"><%= @shop.location %></td>
         </tr>
         <tr>
           <th>電話番号<i class="fas fa-phone mx-1"></i></th>
-          <td class="w-75"><%= @shop.phone_number %></td>
+          <td class="w-50"><%= @shop.phone_number %></td>
         </tr>
         <tr>
           <th>開店時間<i class="fas fa-sun mx-1"></i></th>
-          <td class="w-75"><%= format("%02d時%02d分", @shop.opening_time.hour, @shop.opening_time.min) %></td>
+          <td class="w-50"><%= format("%02d時%02d分", @shop.opening_time.hour, @shop.opening_time.min) %></td>
         </tr>
         <tr>
           <th>閉店時間<i class="fas fa-moon mx-1"></i></th>
-          <td class="w-75"><%= format("%02d時%02d分", @shop.closing_time.hour, @shop.closing_time.min) %></td>
+          <td class="w-50"><%= format("%02d時%02d分", @shop.closing_time.hour, @shop.closing_time.min) %></td>
         </tr>
         <tr>
           <th>駐車場<i class="fas fa-parking mx-1"></i></th>
-          <td class="w-75"><%= @shop.parking.name %></td>
+          <td class="w-50"><%= @shop.parking.name %></td>
         </tr>
         <tr>
           <th>クレジットカード<i class="far fa-credit-card mx-1"></i></th>
-          <td class="w-75"><%= @shop.credit_card.name %></td>
+          <td class="w-50"><%= @shop.credit_card.name %></td>
         </tr>
         <tr>
           <th>電子マネー<i class="fas fa-mobile-alt mx-1"></i></th>
-          <td class="w-75"><%= @shop.electronic_money.name %></td>
+          <td class="w-50"><%= @shop.electronic_money.name %></td>
         </tr>
       </tbody>
     </table>
@@ -96,7 +96,7 @@
           </div>
         </div>
       <% else %>
-        <div class="text-center">メッセージ機能はログイン後にご利用いただけます。</div>
+        <div class="text-center">メッセージ機能はログイン後に<br class='d-block d-sm-none'>ご利用いただけます。</div>
       <% end %>
     </div>
   </div>
