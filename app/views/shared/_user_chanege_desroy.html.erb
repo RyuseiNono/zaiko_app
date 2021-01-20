@@ -1,12 +1,26 @@
 <div class="font-weight-bold h1 m-3 text-center">登録変更</div>
 <div class="h2 m-3 text-center">アカウントに行う処理を選んでください</div>
 <div class="row justify-content-around p-5 mb-5">
+  <% if user_signed_in? %>
+    <%= link_to  edit_user_registration_path, class:"col-md-4 h-auto  btn alert alert-info py-5 text-center" do %>
+    <div class="h1">変更する<i class="fas fa-user-cog h3 mx-2"></i></div>
+    <div class="h5">ユーザー情報変更</div>
+    <% end %>
+
+    <%= link_to  user_registration_path, method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class:"col-md-4 h-auto btn alert alert-danger py-5 text-center " do%>
+    <div class="h1 ">削除する<i class="fas fa-user-slash h3"></i></div>
+    <div class="h5">ユーザー情報削除</div>
+    <% end %>
+
+  <% elsif admin_signed_in? %>
     <%= link_to  edit_admin_registration_path, class:"col-md-4 h-auto  btn alert alert-info py-5 text-center" do %>
-      <div class="h1">変更する<i class="fas fa-user-cog h3 mx-2"></i></div>
-      <div class="h5">ユーザー情報変更</div>
+    <div class="h1">変更する<i class="fas fa-user-cog h3 mx-2"></i></div>
+    <div class="h5">ユーザー情報変更</div>
     <% end %>
+
     <%= link_to  admin_registration_path, method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class:"col-md-4 h-auto btn alert alert-danger py-5 text-center " do%>
-      <div class="h1 ">削除する<i class="fas fa-user-slash h3"></i></div>
-      <div class="h5">ユーザー情報削除</div>
+    <div class="h1 ">削除する<i class="fas fa-user-slash h3"></i></div>
+    <div class="h5">ユーザー情報削除</div>
     <% end %>
+  <% end %>
 </div>
