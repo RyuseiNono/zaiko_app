@@ -1,19 +1,19 @@
-<%= render "shared/second-header"%>
-  <div class="registration-main">
-    <div class="form-wrap alert-dark">
-      <div class='form-header'>
-        <div class='font-wight-bold h1 py-3'>
+<%= render "shared/header"%>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto form-wrap alert alert-dark pb-5">
+        <div class='font-wight-bold h1 py-3 text-center'>
           ユーザー情報変更
         </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render partial: "shared/registration_update_form", locals: { f: f } %>
+          <div class='register-btn mt-4'>
+            <%= button_tag type: 'submit', class: "btn btn-block btn-outline-primary" do %>
+              情報変更<i class="fas fa-user-cog mx-1 mx-1"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render partial: "shared/registration_update_form", locals: { f: f } %>
-        <div class='register-btn mt-4'>
-          <%= button_tag type: 'submit', class: "btn btn-block btn-outline-primary" do %>
-            情報変更<i class="fas fa-user-cog mx-1 mx-1"></i>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
