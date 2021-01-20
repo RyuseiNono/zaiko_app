@@ -17,7 +17,7 @@ www.zaicocco.com
 ## Basic 認証
 
 ```
-ID:admin　pass:9876
+ID:admin pass:9876
 ```
 
 ## 機能一覧
