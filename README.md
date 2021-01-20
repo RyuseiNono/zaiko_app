@@ -12,7 +12,7 @@ Web ページ上で、実店舗の在庫の有無を確認できるアプリケ�
 www.zaicocco.com
 ```
 
-[リンクはこちら](www.zaicocco.com)
+[リンクはこちら](http://www.zaicocco.com)
 簡単ログインがあります。是非ご利用ください。
 
 ## Basic 認証
