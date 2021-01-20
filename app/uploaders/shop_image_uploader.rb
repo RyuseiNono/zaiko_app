@@ -2,7 +2,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [840, 630, 'Center']
+  process resize_to_fill: [800, 800, 'Center']
   # Choose what kind of storage to use for this uploader:
   # storage :file
   if Rails.env.production?
