@@ -54,4 +54,10 @@
       <% end %>
     </ul>
   </div>
+  <% if flash[:notice] %>
+    <div class="alert-primary alert" role="alert"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert-danger alert" role="alert"><%= flash[:alert] %></div>
+  <% end %>
 </header>

@@ -2,6 +2,8 @@
 <div class="container my-3">
   <div class="nav">
     <ul class="lists-left row">
+    <li><%= link_to  shops_path, class: "btn btn-secondary mx-3 my-1" do%>
+    店舗一覧に戻る<i class="fas fa-angle-double-left mx-1"></i><% end %></li>
     <% if admin_signed_in? && @shop.admin.id == current_admin.id %>
       <li><%= link_to  edit_shop_path(@shop), class: "btn btn-success mx-3 my-1" do%>
       店舗情報を編集する<i class="fa fa-edit mx-1"></i><% end %></li>
@@ -10,8 +12,6 @@
       <li><%= link_to  shop_path(@shop), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger mx-3 my-1" do%>
       店舗を削除する<i class="far fa-trash-alt mx-1"></i><% end %></li>
     <% end %>
-    <li><%= link_to  shops_path, class: "btn btn-secondary mx-3 my-1" do%>
-    店舗一覧に戻る<i class="fas fa-angle-double-left mx-1"></i><% end %></li>
     </ul>
   </div>
   <div class="col-md-10 mx-auto">

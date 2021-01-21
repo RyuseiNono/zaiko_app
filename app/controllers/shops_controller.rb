@@ -20,6 +20,8 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
     render :new and return if params[:back] || !@shop.save
+    flash[:notice] = "#{@shop.name}を作成しました"
+    redirect_to shop_items_path(@shop)
   end
 
   def edit
@@ -27,10 +29,14 @@ class ShopsController < ApplicationController
 
   def update
     render :edit and return unless @shop.update(shop_params)
+    flash[:notice] = "#{@shop.name}を編集しました"
+    redirect_to shop_items_path(@shop)
   end
 
   def destroy
     @shop.destroy
+    flash[:notice] = "#{@shop.name}を削除しました"
+    redirect_to root_path
   end
 
   def show
