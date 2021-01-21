@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword]).order(count: 'DESC')
+    @items = Item.search(params[:keyword]).includes(:shop).order(count: 'DESC')
     @keyword = params[:keyword]
   end
 

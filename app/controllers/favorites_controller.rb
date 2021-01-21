@@ -4,10 +4,10 @@ class FavoritesController < ApplicationController
 
   def index
     if user_signed_in?
-      @shops = current_user.favorite_shops.page(params[:page]).per(PER)
+      @shops = current_user.favorite_shops.order('favorites.updated_at DESC').page(params[:page]).per(PER)
       @shop_count = current_user.favorite_shops.count
     elsif admin_signed_in?
-      @shops = current_admin.favorite_shops.page(params[:page]).per(PER)
+      @shops = current_admin.favorite_shops.order('favorites.updated_at DESC').page(params[:page]).per(PER)
       @shop_count = current_admin.favorite_shops.count
     end
   end
