@@ -92,7 +92,7 @@
           <div style="display: none;", class="table table-sm table-striped", id="messages_table">
         <% end %>
           <div id="messages">
-            <%= render partial: "shared/message" ,collection: @shop.messages.order(updated_at: "DESC").limit(10)%>
+            <%= render partial: "shared/message" ,collection: @shop.messages.includes(:user, :admin).order(updated_at: "DESC").limit(10)%>
           </div>
         </div>
       <% else %>
