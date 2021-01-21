@@ -17,7 +17,7 @@
   <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
 </div>
 <div class='login-btn'>
-  <%= button_tag type: 'submit', class: "btn btn-block btn-primary" do %>
+  <%= button_tag type: 'submit', class: "btn btn-block btn-primary", id: 'submit_btn' do %>
   ログイン<i class="fas fa-sign-in-alt mx-1"></i>
   <% end %>
   <%# submitでアイコンを設定したい場合button_tagを使用する %>
