@@ -11,7 +11,7 @@ RSpec.describe "Admins", type: :system do
       # トップページに移動する
       visit(root_path)
       # トップページにサインアップページへ遷移するボタンがあることを確認する
-      expect(page).to have_content('新規登録')
+      expect(page).to have_link('新規登録')
       # 新規登録アカウント選択ページへ移動する
       visit(entrances_sessions_path)
       # 店舗ユーザー新規登録ページへ移動する
@@ -28,12 +28,30 @@ RSpec.describe "Admins", type: :system do
       # トップページへ遷移する
       expect(current_path).to eq root_path
       # ユーザーの名前とログアウトボタンが表示されていることを確認する
-      expect(page).to have_content(@admin.name)
-      expect(page).to have_content('ログアウト')
+      expect(page).to have_link(@admin.name)
+      expect(page).to have_link('ログアウト')
       # 簡単ログイン、新規登録、ログインのボタンが表示されていないことを確認する
-      expect(page).to have_no_content('簡単ログイン')
-      expect(page).to have_no_content('ログイン')
-      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_link('簡単ログイン')
+      expect(page).to have_no_link('ログイン')
+      expect(page).to have_no_link('新規登録')
+    end
+
+    it '簡単ログインを押すとゲストユーザーでログインができてトップページに移動する' do
+      # トップページに移動する
+      visit(root_path)
+      # トップページにサインアップページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('簡単ログイン')
+      # 簡単ログインボタンを押す
+      find('a[id="admins_guest_sign_btn"]').click
+      # トップページへ遷移する
+      expect(current_path).to eq root_path
+      # ユーザーの名前とログアウトボタンが表示されていることを確認する
+      expect(page).to have_link('ゲスト')
+      expect(page).to have_link("ログアウト")
+      # 簡単ログイン、新規登録、ログインのボタンが表示されていないことを確認する
+      expect(page).to have_no_link('簡単ログイン')
+      expect(page).to have_no_link('ログイン')
+      expect(page).to have_no_link('新規登録')
     end
   end
 
@@ -42,7 +60,7 @@ RSpec.describe "Admins", type: :system do
       # トップページに移動する
       visit(root_path)
       # トップページにサインアップページへ遷移するボタンがあることを確認する
-      expect(page).to have_content('新規登録')
+      expect(page).to have_link('新規登録')
       # 新規登録アカウント選択ページへ移動する
       visit(entrances_sessions_path)
       # 店舗ユーザー新規登録ページへ移動する
