@@ -3,8 +3,9 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:edit, :update, :destroy, :show]
   before_action :user_can_edit?, only: [:edit, :update, :destroy]
 
+  SHOP_PER = 6
   def index
-    @shops = Shop.order(updated_at: 'DESC').page(params[:page]).per(PER)
+    @shops = Shop.order(updated_at: 'DESC').page(params[:page]).per(SHOP_PER)
     @shop_count = Shop.all.count
   end
 
@@ -44,7 +45,7 @@ class ShopsController < ApplicationController
   end
 
   def my
-    @shops = Shop.where(admin_id: current_admin[:id]).order(updated_at: 'DESC').page(params[:page]).per(PER)
+    @shops = Shop.where(admin_id: current_admin[:id]).order(updated_at: 'DESC').page(params[:page]).per(SHOP_PER)
     @shop_count = Shop.where(admin_id: current_admin[:id]).count
   end
 

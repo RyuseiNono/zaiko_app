@@ -74,9 +74,10 @@
         </tr>
       </thead>
       <tbody id="items">
-        <%= render partial: "item_index" ,collection:  @shop.items%>
+        <%= render partial: "item_index" ,collection:  @shop.items.page(params[:page]).per(@item_per)%>
       </tbody>
     </table>
+    <%= paginate(@shop.items.page(params[:page]).per(@item_per)) %>
     <p class="font-weight-bold h4 mt-4">メッセージ(最新10件)</p>
     <div class="alert alert-warning">
       <% if user_signed_in? || admin_signed_in? %>

@@ -4,8 +4,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   before_action :user_can_edit?, only: [:new, :update, :create, :destroy]
 
+  ITME_PER = 5
   def index
     @message = Message.new
+    @item_per = ITME_PER
   end
 
   def new
