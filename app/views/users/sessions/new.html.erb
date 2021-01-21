@@ -1,15 +1,13 @@
 <%= render "shared/header"%>
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto">
-      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-      <div class='py-5 mb-3 alert-primary'>
-        <div class='font-wight-bold h1 text-center'>
-          一般ユーザー<br class='d-block d-sm-none'>ログイン
-        </div>
-        <%= render partial: "shared/session_form" ,locals: { f: f } %>
+    <div class="col-md-8 mx-auto alert alert-primary pb-5">
+      <div class='font-wight-bold h1 py-3 text-center'>
+        一般ユーザー<br class='d-block d-sm-none'>ログイン
       </div>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <%= render partial: "shared/session_form" ,locals: { f: f } %>
       <% end %>
     </div>
   </div>
