@@ -9,7 +9,7 @@
     <div class="input-group col-md-8">
       <%= form_with url: items_search_path, local: true, method: :get, class: "form-inline w-100" do |f|%>
         <%= f.text_field :keyword, placeholder: "商品名から探す", class:"form-control w-75" %>
-        <%= button_tag type: 'submit', class: "btn btn-warning text-white" do %>
+        <%= button_tag type: 'submit', class: "btn btn-warning text-white", id:'search_submit' do %>
           <i class="fas fa-search"></i>
         <% end %>
       <% end %>
