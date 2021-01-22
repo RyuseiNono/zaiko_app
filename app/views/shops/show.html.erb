@@ -1,0 +1,105 @@
+<%= render "shared/header"%>
+<div class="container my-3">
+  <div class="nav">
+    <ul class="lists-left row">
+    <li><%= link_to  shops_path, class: "btn btn-secondary mx-3 my-1" do%>
+    店舗一覧に戻る<i class="fas fa-angle-double-left mx-1"></i><% end %></li>
+    <% if admin_signed_in? && @shop.admin.id == current_admin.id %>
+      <li><%= link_to  edit_shop_path(@shop), class: "btn btn-success mx-3 my-1" do%>
+      店舗情報を編集する<i class="fa fa-edit mx-1"></i><% end %></li>
+      <li><%= link_to  new_shop_item_path(@shop), class: "btn btn-success mx-3 my-1" do%>
+      在庫を編集する<i class="fas fa-boxes mx-1"></i><% end %></li>
+      <li><%= link_to  shop_path(@shop), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger mx-3 my-1" do%>
+      店舗を削除する<i class="far fa-trash-alt mx-1"></i><% end %></li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="col-md-10 mx-auto">
+    <% if @shop.shop_image? %>
+      <%= image_tag @shop.shop_image.url, class: 'card-img-top' %>
+    <% else %>
+      <%= image_tag "sample.png", class:"card-img-top" %>
+    <% end %>
+
+    <p class="font-weight-bold h4 mt-4">店舗情報</p>
+    <table class="table table-sm table-striped table-bordered">
+      <tbody>
+        <tr>
+          <th>店舗名<i class="fas fa-store mx-1"></i></th>
+          <td class="w-50"><%= @shop.name %></td>
+        </tr>
+        <tr>
+          <th>住所<i class="fas fa-map-marker-alt mx-1"></i></th>
+          <td class="w-50"><%= @shop.location %></td>
+        </tr>
+        <tr>
+          <th>電話番号<i class="fas fa-phone mx-1"></i></th>
+          <td class="w-50"><%= @shop.phone_number %></td>
+        </tr>
+        <tr>
+          <th>開店時間<i class="fas fa-sun mx-1"></i></th>
+          <td class="w-50"><%= format("%02d時%02d分", @shop.opening_time.hour, @shop.opening_time.min) %></td>
+        </tr>
+        <tr>
+          <th>閉店時間<i class="fas fa-moon mx-1"></i></th>
+          <td class="w-50"><%= format("%02d時%02d分", @shop.closing_time.hour, @shop.closing_time.min) %></td>
+        </tr>
+        <tr>
+          <th>駐車場<i class="fas fa-parking mx-1"></i></th>
+          <td class="w-50"><%= @shop.parking.name %></td>
+        </tr>
+        <tr>
+          <th>クレジットカード<i class="far fa-credit-card mx-1"></i></th>
+          <td class="w-50"><%= @shop.credit_card.name %></td>
+        </tr>
+        <tr>
+          <th>電子マネー<i class="fas fa-mobile-alt mx-1"></i></th>
+          <td class="w-50"><%= @shop.electronic_money.name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="font-weight-bold h4 mt-4">在庫情報</p>
+    <% if @shop.items.present? %>
+      <div style="display: none;", id="items_empty">商品はありません。</div>
+      <table class="table table-hover", id="items_table">
+    <% else %>
+      <div id="items_empty">商品はありません。</div>
+      <table style="display: none;", class="table table-hover", id="items_table">
+    <% end %>
+      <thead>
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">値段</th>
+          <th scope="col">在庫数</th>
+        </tr>
+      </thead>
+      <tbody id="items">
+        <%= render partial: "items/item_index" ,collection:  @shop.items.page(params[:page]).per(@item_per)%>
+      </tbody>
+    </table>
+    <%= paginate(@shop.items.page(params[:page]).per(@item_per)) %>
+    <p class="font-weight-bold h4 mt-4">メッセージ(最新10件)</p>
+    <div class="alert alert-warning">
+      <% if user_signed_in? || admin_signed_in? %>
+        <%= form_with model: [@shop, @message], class:'d-flex justify-content-around my-3' do |f| %>
+          <%= f.text_field :text, class:"form-inline form-control", placeholder:"メッセージを入力してください", id: "message-form" %>
+          <%= f.submit '送信する', class:"form-inline btn btn-warning text-white" %>
+        <% end %>
+        <% if @shop.messages.present? %>
+          <div style="display: none;" id="messages_empty">メッセージはありません。</div>
+          <div class="table table-sm table-striped", id="messages_table">
+        <% else %>
+          <div id="messages_empty">メッセージはありません。</div>
+          <div style="display: none;", class="table table-sm table-striped", id="messages_table">
+        <% end %>
+          <div id="messages">
+            <%= render partial: "shared/message" ,collection: @shop.messages.includes(:user, :admin).order(updated_at: "DESC").limit(10)%>
+          </div>
+        </div>
+      <% else %>
+        <div class="text-center">メッセージ機能はログイン後に<br class='d-block d-sm-none'>ご利用いただけます。</div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "shared/second-footer"%>

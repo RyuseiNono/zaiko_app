@@ -3,7 +3,6 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:edit, :update, :destroy, :show]
   before_action :user_can_edit?, only: [:edit, :update, :destroy]
 
-  SHOP_PER = 6
   def index
     @shops = Shop.order(updated_at: 'DESC').page(params[:page]).per(SHOP_PER)
     @shop_count = Shop.all.count
@@ -22,7 +21,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     render :new and return if params[:back] || !@shop.save
     flash[:notice] = "#{@shop.name}を作成しました"
-    redirect_to shop_items_path(@shop)
+    redirect_to shop_path(@shop)
   end
 
   def edit
@@ -31,7 +30,7 @@ class ShopsController < ApplicationController
   def update
     render :edit and return unless @shop.update(shop_params)
     flash[:notice] = "#{@shop.name}を編集しました"
-    redirect_to shop_items_path(@shop)
+    redirect_to shop_path(@shop)
   end
 
   def destroy
@@ -41,7 +40,8 @@ class ShopsController < ApplicationController
   end
 
   def show
-    redirect_to controller: :items, action: :index, shop_id: params[:id]
+    @message = Message.new
+    @item_per = ITME_PER
   end
 
   def my

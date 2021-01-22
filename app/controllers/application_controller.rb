@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :authenticate_user!
 
+  # ページネーションの個数
+  SHOP_PER = 6
+  ITME_PER = 5
+
   private
 
   def configure_permitted_parameters
