@@ -10,12 +10,12 @@
     </td>
     <td class="w-25">
       <%= link_to  edit_shop_item_path(item_new.shop,item_new), class: "btn btn-light", remote: true do%>
-        在庫を編集する<i class="fas fa-sync mx-1"></i>
+        商品を編集する<i class="fas fa-sync mx-1"></i>
       <% end %>
     </td>
     <td class="w-25">
       <%= link_to  shop_item_path(item_new.shop,item_new), method: :delete, data: { confirm: "この作業は戻せません。本当に削除しますか?" }, class: "btn btn-danger",remote: true do%>
-        在庫を削除する<i class="far fa-trash-alt mx-1"></i>
+        商品を削除する<i class="far fa-trash-alt mx-1"></i>
       <% end %>
     </td>
   <% end %>
