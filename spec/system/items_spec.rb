@@ -77,9 +77,9 @@ RSpec.describe 'Itemを編集する', type: :system do
       click_on("商品を編集する")
       sleep(0.1)
       # 商品の情報を編集する
-      fill_in("item_name_update-##{@item.id}", with: @item_edit.name)
-      fill_in("item_price_update-##{@item.id}", with: @item_edit.price)
-      fill_in("item_count_update-##{@item.id}", with: @item_edit.count)
+      fill_in("item_name_update-##{@item}", with: @item_edit.name)
+      fill_in("item_price_update-##{@item}", with: @item_edit.price)
+      fill_in("item_count_update-##{@item}", with: @item_edit.count)
       # 編集を保存するを押す
       click_on("編集を保存する")
       sleep(0.1)
@@ -104,9 +104,9 @@ RSpec.describe 'Itemを編集する', type: :system do
       click_on("商品を編集する")
       sleep(0.1)
       # 商品の誤った情報を編集する
-      fill_in("item_name_update-##{@item.id}", with: "")
-      fill_in("item_price_update-##{@item.id}", with: "")
-      fill_in("item_count_update-##{@item.id}", with: "")
+      fill_in("item_name_update-##{@item}", with: "")
+      fill_in("item_price_update-##{@item}", with: "")
+      fill_in("item_count_update-##{@item}", with: "")
       # 編集を保存するを押す
       click_on("編集を保存する")
       sleep(0.1)
