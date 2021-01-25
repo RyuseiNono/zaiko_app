@@ -1,5 +1,5 @@
 <div class="col-md-4 h-auto">
-  <%= link_to shop_items_path(shop) do %>
+  <%= link_to shop_path(shop) do %>
     <div class="card m-1 shadow bg-warning position-relative">
       <% if shop.shop_image? %>
         <%= image_tag shop.shop_image.url, class: 'card-img-top img-fluid' %>

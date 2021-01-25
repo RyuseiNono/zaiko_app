@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  before do
-    @message = FactoryBot.build(:message)
-  end
+  before { @message = FactoryBot.build(:message) }
 
   describe 'メッセージの新規登録' do
     context '新規登録がうまくいくとき' do
@@ -22,13 +20,17 @@ RSpec.describe Message, type: :model do
       it 'textが空だと登録できない' do
         @message.text = ''
         @message.valid?
-        expect(@message.errors.full_messages).to include('メッセージを入力してください')
+        expect(@message.errors.full_messages).to include(
+          'メッセージを入力してください'
+        )
       end
 
       it 'shopが空だと登録できない' do
         @message.shop = nil
         @message.valid?
-        expect(@message.errors.full_messages).to include('店舗を入力してください')
+        expect(@message.errors.full_messages).to include(
+          '店舗を入力してください'
+        )
       end
     end
   end

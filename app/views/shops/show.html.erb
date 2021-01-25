@@ -74,7 +74,7 @@
         </tr>
       </thead>
       <tbody id="items">
-        <%= render partial: "item_index" ,collection:  @shop.items.page(params[:page]).per(@item_per)%>
+        <%= render partial: "items/item_index" ,collection:  @shop.items.page(params[:page]).per(@item_per)%>
       </tbody>
     </table>
     <%= paginate(@shop.items.page(params[:page]).per(@item_per)) %>

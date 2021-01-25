@@ -2,6 +2,7 @@
   "name": "zaiko_app",
   "private": true,
   "dependencies": {
+    "@prettier/plugin-ruby": "^1.5.0",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",

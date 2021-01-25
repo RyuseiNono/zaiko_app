@@ -1,7 +1,5 @@
 <%= render "shared/header"%>
 <div class="container my-3">
-  <div class="alert-primary" role="alert"><%= flash[:notice] %></div>
-  <div class="alert-danger" role="alert"><%= flash[:alert] %></div>
   <div class="font-weight-bold h2"><%= "店舗一覧 全#{@shop_count}店" %></div>
   <div class="row">
     <%= render partial: "shop" ,collection:  @shops%>

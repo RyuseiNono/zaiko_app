@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :items
     post 'items/:id', to:'items#update'
     # 何故かAJAXで作成した更新ボタンがPATCHではなくPOSTするので、その対策
-    resources :favorites , only: [:create, :destroy]
+    resources :favorites ,only: [:create, :destroy]
     collection do
       get :my
       post :confirm
