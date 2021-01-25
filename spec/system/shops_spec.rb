@@ -131,8 +131,7 @@ RSpec.describe "Shopを削除する", type: :system do
     find('button[id=submit_btn]').click
     # 店舗ページへ遷移する
     visit(shop_path(@shop))
-    # 店舗を削除するを押し、確認画面でOKを選択
-    binding.pry
+    # 店舗を削除するを押し、確認画面でOKを選択するとShopのカウントが１減ることを確認
     expect{
       page.accept_confirm do
         click_on("店舗を削除する")
