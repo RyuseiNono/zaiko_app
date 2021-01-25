@@ -2,8 +2,20 @@ class Item < ApplicationRecord
   belongs_to :shop
   with_options presence: true do
     validates :name
-    validates :price, numericality: { only_integer: true }, length: { maximum: 8 }
-    validates :count, numericality: { only_integer: true }, length: { maximum: 2 }
+    validates :price,
+              numericality: {
+                only_integer: true
+              },
+              length: {
+                maximum: 8
+              }
+    validates :count,
+              numericality: {
+                only_integer: true
+              },
+              length: {
+                maximum: 2
+              }
   end
 
   # 全角の処理
@@ -13,10 +25,6 @@ class Item < ApplicationRecord
   end
 
   def self.search(keyword)
-    if keyword != ''
-      Item.where('name LIKE(?)', "%#{keyword}%")
-    else
-      Item.all
-    end
+    keyword != '' ? Item.where('name LIKE(?)', "%#{keyword}%") : Item.all
   end
 end

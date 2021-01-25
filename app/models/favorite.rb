@@ -1,6 +1,6 @@
 class Favorite < ApplicationRecord
   belongs_to :admin, required: false
-  belongs_to :user,  required: false
+  belongs_to :user, required: false
   belongs_to :shop
 
   with_options presence: true do

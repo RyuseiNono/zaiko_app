@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User新規登録", type: :system do
+RSpec.describe 'User新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -21,9 +21,9 @@ RSpec.describe "User新規登録", type: :system do
       fill_in('password', with: @user.password)
       fill_in('password-confirmation', with: @user.password_confirmation)
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('button[id="user_registration_submit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移する
       expect(current_path).to eq root_path
       # ユーザーの名前とログアウトボタンが表示されていることを確認する
@@ -52,16 +52,16 @@ RSpec.describe "User新規登録", type: :system do
       fill_in('password', with: '')
       fill_in('password-confirmation', with: '')
       # サインアップボタンを押してもuserモデルのカウントは上がらないことを確認する
-      expect{
+      expect do
         find('button[id="user_registration_submit"]').click
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
-      expect(current_path).to eq "/users"
+      expect(current_path).to eq '/users'
     end
   end
 end
 
-RSpec.describe "Userログイン", type: :system do
+RSpec.describe 'Userログイン', type: :system do
   before do
     @user = FactoryBot.create(:user)
   end

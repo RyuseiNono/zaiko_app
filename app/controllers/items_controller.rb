@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :search]
-  before_action :set_shop, only: [:index, :new, :update, :create, :destroy]
-  before_action :set_item, only: [:edit, :update, :destroy]
-  before_action :user_can_edit?, only: [:new, :update, :create, :destroy]
+  before_action :authenticate_admin!, except: %i[index search]
+  before_action :set_shop, only: %i[index new update create destroy]
+  before_action :set_item, only: %i[edit update destroy]
+  before_action :user_can_edit?, only: %i[new update create destroy]
 
   def index
-    binding.pry
+    # binding.pry
   end
 
   def new
@@ -17,15 +17,15 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    return unless @item.save
+    render plain: 'ERROR' unless @item.save
   end
 
   def update
-    return unless @item.update(item_params)
+    render plain: 'ERROR' unless @item.update(item_params)
   end
 
   def destroy
-    return unless @item.destroy
+    render plain: 'ERROR' unless @item.destroy
   end
 
   def search
@@ -36,7 +36,12 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    item_params = params.require(:item).permit(:name, :count, :price).merge(shop_id: params[:shop_id])
+    item_params =
+      params
+      .require(:item)
+      .permit(:name, :count, :price)
+      .merge(shop_id: params[:shop_id])
+
     # 全角の処理
     Item.price_converter(item_params)
   end

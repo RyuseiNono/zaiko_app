@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Admin新規登録", type: :system do
+RSpec.describe 'Admin新規登録', type: :system do
   before do
     @admin = FactoryBot.build(:admin)
   end
@@ -21,9 +21,9 @@ RSpec.describe "Admin新規登録", type: :system do
       fill_in('password', with: @admin.password)
       fill_in('password-confirmation', with: @admin.password_confirmation)
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('button[id="admin_registration_submit"]').click
-      }.to change { Admin.count }.by(1)
+      end.to change { Admin.count }.by(1)
       # トップページへ遷移することを確認する
       expect(current_path).to eq root_path
       # ユーザーの名前とログアウトボタンと通知が表示されていることを確認する
@@ -53,16 +53,16 @@ RSpec.describe "Admin新規登録", type: :system do
       fill_in('password', with: '')
       fill_in('password-confirmation', with: '')
       # サインアップボタンを押してもadminモデルのカウントは上がらないことを確認する
-      expect{
+      expect do
         find('button[id="admin_registration_submit"]').click
-      }.to change { Admin.count }.by(0)
+      end.to change { Admin.count }.by(0)
       # 新規登録ページへ戻されることを確認する
-      expect(current_path).to eq "/admins"
+      expect(current_path).to eq '/admins'
     end
   end
 end
 
-RSpec.describe "Adminログイン", type: :system do
+RSpec.describe 'Adminログイン', type: :system do
   before do
     @admin = FactoryBot.create(:admin)
   end
@@ -120,7 +120,7 @@ RSpec.describe "Adminログイン", type: :system do
   end
 end
 
-RSpec.describe "簡単ログイン", type: :system do
+RSpec.describe '簡単ログイン', type: :system do
   context 'ログインができるとき' do
     it '簡単ログインを押すとゲストユーザーでログインができてトップページに移動する' do
       # トップページに移動する
@@ -133,7 +133,7 @@ RSpec.describe "簡単ログイン", type: :system do
       expect(current_path).to eq root_path
       # ユーザーの名前とログアウトボタンと通知が表示されていることを確認する
       expect(page).to have_link('ゲスト')
-      expect(page).to have_link("ログアウト")
+      expect(page).to have_link('ログアウト')
       expect(page).to have_content('ゲストユーザーとしてログインしました。')
       # 簡単ログイン、新規登録、ログインのボタンが表示されていないことを確認する
       expect(page).to have_no_link('簡単ログイン')
@@ -143,29 +143,29 @@ RSpec.describe "簡単ログイン", type: :system do
   end
 end
 
-RSpec.describe "Adminログアウト", type: :system do
+RSpec.describe 'Adminログアウト', type: :system do
   before do
     @admin = FactoryBot.create(:admin)
   end
 
   context 'ログアウトができるとき' do
     it 'ログアウトボタンを押すとログアウトができてトップページに移動する' do
-    # ログインする
-    visit(new_admin_session_path)
-    fill_in('email', with: @admin.email)
-    fill_in('password', with: @admin.password)
-    find('button[id=submit_btn]').click
-    # ログアウトボタンを確認する
-    expect(page).to have_link('ログアウト')
-    # ログアウトボタンを押すとトップページに戻る
-    find('a[id="sign_out_btn"]').click
-    expect(current_path).to eq root_path
-    # 簡単ログイン、新規登録、ログインのボタンが表示されていることを確認する
-    expect(page).to have_link('簡単ログイン')
-    expect(page).to have_link('ログイン')
-    expect(page).to have_link('新規登録')
-    # 通知が表示されていることを確認する
-    expect(page).to have_content('ログアウトしました。')
+      # ログインする
+      visit(new_admin_session_path)
+      fill_in('email', with: @admin.email)
+      fill_in('password', with: @admin.password)
+      find('button[id=submit_btn]').click
+      # ログアウトボタンを確認する
+      expect(page).to have_link('ログアウト')
+      # ログアウトボタンを押すとトップページに戻る
+      find('a[id="sign_out_btn"]').click
+      expect(current_path).to eq root_path
+      # 簡単ログイン、新規登録、ログインのボタンが表示されていることを確認する
+      expect(page).to have_link('簡単ログイン')
+      expect(page).to have_link('ログイン')
+      expect(page).to have_link('新規登録')
+      # 通知が表示されていることを確認する
+      expect(page).to have_content('ログアウトしました。')
     end
   end
 end
