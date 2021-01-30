@@ -25,7 +25,7 @@ ID:admin pass:9876
 
 - Ruby 2.5.7
 - Ruby on Rails 6.0.3.4
-- MySQL 14.14
+- MySQL 5.6.47 
 - Nginx 1.18.0
 - unicorn 5.4.1
 - AWS
