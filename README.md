@@ -108,3 +108,4 @@ ID:admin pass:9876
 - 位置情報による在庫検索(geocoder)
 - https 通信化
 - 無限スクロール
+- CSVでのデータ入力、更新
